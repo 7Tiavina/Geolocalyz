@@ -89,17 +89,17 @@ https://templatemo.com/tm-562-space-dynamic
                 <p>GeoLocalyz est un SaaS sécurisé qui permet de localiser une personne via un lien unique, rapide et 100% conforme. Aucun téléchargement, aucun tracking : juste la localisation instantanée avec consentement.</p>
                 <form id="search" action="#" method="GET">
                   <fieldset>
-                    <input type="address" name="address" class="email" placeholder="Saisissez un numéro à géolocaliser..." autocomplete="on" required>
+                    <input type="address" name="address" class="email" placeholder="Saisissez un numéro..." autocomplete="on" required>
                   </fieldset>
                   <fieldset>
-                    <button type="submit" class="main-button">Envoyer une demande</button>
+                    <button type="submit" class="main-button">Localiser</button>
                   </fieldset>
                 </form>
               </div>
             </div>
             <div class="col-lg-6">
               <div class="right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
-                <img src="assets/images/banner-right-image1.png" alt="team meeting">
+                <div id="lottie-animation" style="width: 100%; height: auto;"></div>
               </div>
             </div>
           </div>
@@ -107,6 +107,17 @@ https://templatemo.com/tm-562-space-dynamic
       </div>
     </div>
 </div>
+
+  <script>
+    var animation = lottie.loadAnimation({
+      container: document.getElementById('lottie-animation'),
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      path: 'assets/images/Lottie.json'
+    });
+  </script>
+
 
 
 
@@ -434,9 +445,7 @@ https://templatemo.com/tm-562-space-dynamic
     <div class="container">
       <div class="row">
         <div class="col-lg-12 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.25s">
-          <p>© 2025 Geolocalyz SaaS — Tous droits réservés. 
-          
-          <br>Développement & Optimisation : Votre solution de géolocalisation professionnelle</p>
+          <p>© 2025 Geolocalyz — Tous droits réservés. </p>
         </div>
       </div>
     </div>
@@ -448,6 +457,7 @@ https://templatemo.com/tm-562-space-dynamic
   <script src="assets/js/owl-carousel.js"></script>
   <script src="assets/js/animation.js"></script>
   <script src="assets/js/imagesloaded.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.10.0/lottie.min.js"></script>
   <script src="assets/js/templatemo-custom.js"></script>
 
 </body>
