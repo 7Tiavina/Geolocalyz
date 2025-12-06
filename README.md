@@ -1,4 +1,4 @@
-# 🌐 Geolocalyz — SaaS de géolocalisation avec consentement
+# 🟢⚪ Geolocalyz🍋‍🟩 — SaaS de géolocalisation 🟢⚪
 
 **Geolocalyz** est un **SaaS Laravel** simple, moderne et éthique permettant de demander et recevoir la localisation d’une personne via un lien unique et sécurisé — uniquement avec son **consentement explicite**.
 
@@ -76,36 +76,6 @@
 
 ---
 
-## 🧪 Installation rapide
-
-```
-git clone https://github.com/votre-geolocalyz
-cd geolocalyz
-composer install
-cp .env.example .env
-php artisan key:generate
-php artisan migrate --seed
-php artisan serve
-```
-
----
-
-## 📄 Licence
-
-Projet open-source modulable — à personnaliser selon votre usage.
-
----
-
-## ✨ Contributeurs
-
-Vous pouvez proposer :
-
-* améliorations UI/UX
-* nouvelles intégrations SMS
-* optimisation backend
-* documentation
-
----
 
 ## ❤️ À propos
 
