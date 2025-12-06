@@ -1,82 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
 
-  <head>
+@section('content')
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-    <title>GeoLocalyz - Localysation de téléphone</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="assets/css/fontawesome.css">
-    <link rel="stylesheet" href="assets/css/templatemo-space-dynamic.css">
-    <link rel="stylesheet" href="assets/css/animated.css">
-    <link rel="stylesheet" href="assets/css/owl.css">
-    <link rel="icon" type="image/png" href="assets/images/favicon.png">
-<!--
-    
-TemplateMo 562 Space Dynamic
-
-https://templatemo.com/tm-562-space-dynamic
-
--->
-  </head>
-
-<body>
-
-  <!-- ***** Preloader Start ***** -->
-  <div id="js-preloader" class="js-preloader">
-    <div class="preloader-inner">
-      <span class="dot"></span>
-      <div class="dots">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </div>
-  </div>
-  <!-- ***** Preloader End ***** -->
-
-  <!-- ***** Header Area Start ***** -->
-  <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <nav class="main-nav">
-            <!-- ***** Logo Start ***** -->
-            <a href="index.html" class="logo">
-              <img src="assets/images/logo-principal.png" alt="Logo GeoLocalyz" style="height: 50px;"/>
-            </a>
-            <!-- ***** Logo End ***** -->
-            <!-- ***** Menu Start ***** -->
-            <ul class="nav">
-              <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
-              <li class="scroll-to-section"><a href="#about">About Us</a></li>
-              <li class="scroll-to-section"><a href="#services">Services</a></li>
-              <li class="scroll-to-section"><a href="#portfolio">Portfolio</a></li>
-              <li class="scroll-to-section"><a href="#blog">Blog</a></li> 
-              <li class="scroll-to-section"><a href="#contact">Message Us</a></li> 
-              <li class="scroll-to-section"><div class="main-red-button"><a href="#contact">Contact Now</a></div></li> 
-            </ul>        
-            <a class='menu-trigger'>
-                <span>Menu</span>
-            </a>
-            <!-- ***** Menu End ***** -->
-          </nav>
-        </div>
-      </div>
-    </div>
-  </header>
-  <!-- ***** Header Area End ***** -->
-
+  <!-- Banner -->
   <div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
     <div class="container">
       <div class="row">
@@ -108,17 +34,6 @@ https://templatemo.com/tm-562-space-dynamic
     </div>
 </div>
 
-  <script>
-    var animation = lottie.loadAnimation({
-      container: document.getElementById('lottie-animation'),
-      renderer: 'svg',
-      loop: true,
-      autoplay: true,
-      path: 'assets/images/Lottie.json'
-    });
-  </script>
-
-
 
 
   <div id="about" class="about-us section">
@@ -126,7 +41,7 @@ https://templatemo.com/tm-562-space-dynamic
       <div class="row">
         <div class="col-lg-4">
           <div class="left-image wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
-            <img src="assets/images/about-left-image.png" alt="GeoLocalyz présentation">
+            <img src="{{ asset('assets/images/about-left-image.png') }}" alt="GeoLocalyz présentation">
           </div>
         </div>
         <div class="col-lg-8 align-self-center">
@@ -136,7 +51,7 @@ https://templatemo.com/tm-562-space-dynamic
               <div class="col-lg-6">
                 <div class="item wow fadeIn" data-wow-duration="1s" data-wow-delay="0.5s">
                   <div class="icon">
-                    <img src="assets/images/service-icon-01.png" alt="localisation instantanée">
+                    <img src="{{ asset('assets/images/service-icon-01.png') }}" alt="localisation instantanée">
                   </div>
                   <div class="right-text">
                     <h4>Localisation Instantanée</h4>
@@ -148,7 +63,7 @@ https://templatemo.com/tm-562-space-dynamic
               <div class="col-lg-6">
                 <div class="item wow fadeIn" data-wow-duration="1s" data-wow-delay="0.7s">
                   <div class="icon">
-                    <img src="assets/images/service-icon-02.png" alt="sécurité des données">
+                    <img src="{{ asset('assets/images/service-icon-02.png') }}" alt="sécurité des données">
                   </div>
                   <div class="right-text">
                     <h4>Protection & Sécurité</h4>
@@ -160,7 +75,7 @@ https://templatemo.com/tm-562-space-dynamic
               <div class="col-lg-6">
                 <div class="item wow fadeIn" data-wow-duration="1s" data-wow-delay="0.9s">
                   <div class="icon">
-                    <img src="assets/images/service-icon-03.png" alt="tableau de bord géolocalisation">
+                    <img src="{{ asset('assets/images/service-icon-03.png') }}" alt="tableau de bord géolocalisation">
                   </div>
                   <div class="right-text">
                     <h4>Dashboard en Temps Réel</h4>
@@ -172,7 +87,7 @@ https://templatemo.com/tm-562-space-dynamic
               <div class="col-lg-6">
                 <div class="item wow fadeIn" data-wow-duration="1s" data-wow-delay="1.1s">
                   <div class="icon">
-                    <img src="assets/images/service-icon-04.png" alt="facilité d'utilisation">
+                    <img src="{{ asset('assets/images/service-icon-04.png') }}" alt="facilité d'utilisation">
                   </div>
                   <div class="right-text">
                     <h4>Ultra Simple à Utiliser</h4>
@@ -194,7 +109,7 @@ https://templatemo.com/tm-562-space-dynamic
       <div class="row">
         <div class="col-lg-6 align-self-center wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.2s">
           <div class="left-image">
-            <img src="assets/images/services-left-image.png" alt="services geolocalyz">
+            <img src="{{ asset('assets/images/services-left-image.png') }}" alt="services geolocalyz">
           </div>
         </div>
 
@@ -258,7 +173,7 @@ https://templatemo.com/tm-562-space-dynamic
                 <p>Obtenez des insights détaillés pour optimiser vos décisions stratégiques.</p>
               </div>
               <div class="showed-content">
-                <img src="assets/images/portfolio-image.png" alt="">
+                <img src="{{ asset('assets/images/portfolio-image.png') }}" alt="">
               </div>
             </div>
           </a>
@@ -272,7 +187,7 @@ https://templatemo.com/tm-562-space-dynamic
                 <p>Recevez des rapports clairs et actionnables pour suivre votre évolution en temps réel.</p>
               </div>
               <div class="showed-content">
-                <img src="assets/images/portfolio-image.png" alt="">
+                <img src="{{ asset('assets/images/portfolio-image.png') }}" alt="">
               </div>
             </div>
           </a>
@@ -286,7 +201,7 @@ https://templatemo.com/tm-562-space-dynamic
                 <p>Évaluez la rapidité, la fiabilité et la stabilité de vos services en un clic.</p>
               </div>
               <div class="showed-content">
-                <img src="assets/images/portfolio-image.png" alt="">
+                <img src="{{ asset('assets/images/portfolio-image.png') }}" alt="">
               </div>
             </div>
           </a>
@@ -300,7 +215,7 @@ https://templatemo.com/tm-562-space-dynamic
                 <p>Transformez vos données en actions concrètes grâce à une analyse intelligente.</p>
               </div>
               <div class="showed-content">
-                <img src="assets/images/portfolio-image.png" alt="">
+                <img src="{{ asset('assets/images/portfolio-image.png') }}" alt="">
               </div>
             </div>
           </a>
@@ -320,7 +235,7 @@ https://templatemo.com/tm-562-space-dynamic
         </div>
         <div class="col-lg-6 wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.25s">
           <div class="top-dec">
-            <img src="assets/images/blog-dec.png" alt="">
+            <img src="{{ asset('assets/images/blog-dec.png') }}" alt="">
           </div>
         </div>
       </div>
@@ -328,7 +243,7 @@ https://templatemo.com/tm-562-space-dynamic
       <div class="row">
         <div class="col-lg-6 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.25s">
           <div class="left-image">
-            <a href="#"><img src="assets/images/big-blog-thumb.jpg" alt="Workspace Desktop"></a>
+            <a href="#"><img src="{{ asset('assets/images/big-blog-thumb.jpg') }}" alt="Workspace Desktop"></a>
             <div class="info">
               <div class="inner-content">
                 <ul>
@@ -356,7 +271,7 @@ https://templatemo.com/tm-562-space-dynamic
                   <p>Découvrez comment nos derniers ajouts renforcent la précision et simplifient la gestion de vos suivis...</p>
                 </div>
                 <div class="right-image">
-                  <a href="#"><img src="assets/images/blog-thumb-01.jpg" alt=""></a>
+                  <a href="#"><img src="{{ asset('assets/images/blog-thumb-01.jpg') }}" alt=""></a>
                 </div>
               </li>
 
@@ -367,7 +282,7 @@ https://templatemo.com/tm-562-space-dynamic
                   <p>Optimisez vos opérations grâce à nos astuces et bonnes pratiques pour tirer le meilleur du SAAS...</p>
                 </div>
                 <div class="right-image">
-                  <a href="#"><img src="assets/images/blog-thumb-01.jpg" alt=""></a>
+                  <a href="#"><img src="{{ asset('assets/images/blog-thumb-01.jpg') }}" alt=""></a>
                 </div>
               </li>
 
@@ -378,7 +293,7 @@ https://templatemo.com/tm-562-space-dynamic
                   <p>Un aperçu des optimisations techniques, mises à jour de performance et futures améliorations...</p>
                 </div>
                 <div class="right-image">
-                  <a href="#"><img src="assets/images/blog-thumb-01.jpg" alt=""></a>
+                  <a href="#"><img src="{{ asset('assets/images/blog-thumb-01.jpg') }}" alt=""></a>
                 </div>
               </li>
             </ul>
@@ -432,7 +347,7 @@ https://templatemo.com/tm-562-space-dynamic
               </div>
             </div>
             <div class="contact-dec">
-              <img src="assets/images/contact-decoration.png" alt="">
+              <img src="{{ asset('assets/images/contact-decoration.png') }}" alt="">
             </div>
           </form>
         </div>
@@ -440,25 +355,4 @@ https://templatemo.com/tm-562-space-dynamic
     </div>
 </div>
 
-
-  <footer>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.25s">
-          <p>© 2025 Geolocalyz — Tous droits réservés. </p>
-        </div>
-      </div>
-    </div>
-</footer>
-
-  <!-- Scripts -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/owl-carousel.js"></script>
-  <script src="assets/js/animation.js"></script>
-  <script src="assets/js/imagesloaded.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.10.0/lottie.min.js"></script>
-  <script src="assets/js/templatemo-custom.js"></script>
-
-</body>
-</html>
+@endsection
