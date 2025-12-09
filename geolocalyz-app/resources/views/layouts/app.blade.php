@@ -21,6 +21,8 @@
     <link rel="icon" type="image/png" href="{{ asset('assets/images/favicon.png') }}">
 <style>
 /* Custom Header Styles for alignment */
+/* Removed padding-top from body */
+
 .header-area {
   background-color: #fff;
   height: 80px;
@@ -100,6 +102,11 @@
 .header-area .main-nav .menu-trigger {
   display: none;
 }
+
+/* Compensate for fixed header, pushing main content down */
+.main-banner {
+  padding-top: 80px;
+}
 </style>
 </head>
 <body>
@@ -174,5 +181,47 @@
     });
   </script>
 
+  <script>
+    let lastScrollTop = 0;
+    const header = document.querySelector('.header-area');
+    // Ensure header exists before trying to get its offsetHeight
+    const headerHeight = header ? header.offsetHeight : 0; 
+
+    window.addEventListener('scroll', function() {
+      let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+      if (scrollTop > lastScrollTop && scrollTop > headerHeight) {
+        // Scrolling down and past the header
+        if (header) header.style.transform = 'translateY(-100%)';
+      } else {
+        // Scrolling up
+        if (header) header.style.transform = 'translateY(0)';
+      }
+      lastScrollTop = scrollTop;
+    });
+
+    // Show header on mouse passage near the top
+    let mouseMoveTimer;
+    document.body.addEventListener('mousemove', function(e) {
+      // If mouse is near top (e.clientY < 50px) and header is hidden
+      if (e.clientY < 50 && header && header.style.transform === 'translateY(-100%)') {
+        header.style.transform = 'translateY(0)';
+        clearTimeout(mouseMoveTimer); // Clear any previous timer
+        // Set a timer to potentially re-hide the header if the mouse leaves the top area
+        mouseMoveTimer = setTimeout(() => {
+          // Check if still scrolled down and mouse is not at the top (to avoid immediate re-hide if still at top)
+          if (window.pageYOffset > headerHeight && e.clientY >= 50) { 
+            header.style.transform = 'translateY(-100%)';
+          }
+        }, 1500); // Re-hide after 1.5 seconds if conditions met
+      } else if (e.clientY >= 50 && header && header.style.transform === 'translateY(0)') {
+         // If mouse moved away from top and header is visible, clear the timer
+         clearTimeout(mouseMoveTimer);
+      }
+    });
+
+    // Add transition for smooth hide/show
+    if (header) header.style.transition = 'transform 0.3s ease-in-out';
+  </script>
 </body>
 </html>
