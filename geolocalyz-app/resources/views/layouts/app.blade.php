@@ -19,6 +19,88 @@
     <link rel="stylesheet" href="{{ asset('assets/css/animated.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/owl.css') }}">
     <link rel="icon" type="image/png" href="{{ asset('assets/images/favicon.png') }}">
+<style>
+/* Custom Header Styles for alignment */
+.header-area {
+  background-color: #fff;
+  height: 80px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.15);
+}
+
+.header-area .main-nav {
+  background: transparent;
+  display: flex;
+  align-items: center; /* Vertically centers children */
+  justify-content: space-between; /* Distributes items horizontally: Logo left, Nav middle, Button right */
+  width: 100%;
+  height: 80px; /* Ensure main-nav takes full header height */
+  padding: 0 15px; /* Add some padding to the sides */
+}
+
+.header-area .main-nav .logo img {
+  height: 50px; /* Logo height */
+  flex-shrink: 0; /* Prevent logo from shrinking */
+}
+
+.header-area .main-nav .nav {
+  display: flex;
+  align-items: center; /* Vertically centers li items */
+  list-style: none; /* Remove bullet points */
+  padding: 0;
+  margin: 0 auto; /* This centers the ul.nav block between logo and button */
+  flex-grow: 0; /* Ensure nav block doesn't take all available space */
+}
+
+.header-area .main-nav .nav li {
+  padding: 0 15px; /* Spacing between nav items */
+}
+
+.header-area .main-nav .nav li a {
+  display: block;
+  font-weight: 500;
+  font-size: 15px;
+  color: #1e1e1e;
+  text-transform: capitalize;
+  height: 50px; /* Explicit height */
+  line-height: 50px; /* Center text vertically */
+  border: transparent;
+  letter-spacing: 1px;
+  text-decoration: none; /* Remove underline */
+}
+
+.header-area .main-nav .nav li a:hover,
+.header-area .main-nav .nav li a.active {
+  color: #33d7bb!important;
+}
+
+.main-red-button {
+  flex-shrink: 0; /* Prevent button from shrinking */
+}
+
+.main-red-button a {
+  display: inline-block;
+  background-color: #33d7bb; /* Green color */
+  font-size: 15px;
+  font-weight: 400;
+  color: #fff;
+  text-transform: capitalize;
+  padding: 12px 25px;
+  border-radius: 25px; /* Softer rounded corners */
+  letter-spacing: 0.25px;
+  text-decoration: none; /* Remove underline */
+  line-height: 26px; /* Adjust based on padding 12px top + 12px bottom = 24px, plus a couple pixels */
+}
+
+/* Hide mobile trigger on desktop */
+.header-area .main-nav .menu-trigger {
+  display: none;
+}
+</style>
 </head>
 <body>
 
@@ -35,36 +117,29 @@
   </div>
   <!-- ***** Preloader End ***** -->
 
-  <!-- ***** Header Area Start ***** -->
-  <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <nav class="main-nav">
-                    <!-- ***** Logo Start ***** -->
-                    <a href="{{ url('/') }}" class="logo">
-                        <img src="{{ asset('assets/images/logo-principal.png') }}" alt="Logo GeoLocalyz" style="height: 50px;"/>
-                    </a>
-                    <!-- ***** Logo End ***** -->
-                    <!-- ***** Menu Start ***** -->
-                    <ul class="nav">
-                        <li class="scroll-to-section"><a href="#top" class="active">Accueil</a></li>
-                        <li class="scroll-to-section"><a href="#about">À propos</a></li>
-                        <li class="scroll-to-section"><a href="#services">Fonctionnalités</a></li>
-                        <li class="scroll-to-section"><a href="#portfolio">Utilisations</a></li>
-                        <li class="scroll-to-section"><a href="#blog">Actualités</a></li>
-                        <li class="scroll-to-section" style="margin-left: auto;"><div class="main-red-button"><a href="#contact">Essayer maintenant</a></div></li>
-                    </ul>
-                    <a class='menu-trigger'>
-                        <span>Menu</span>
-                    </a>
-                    <!-- ***** Menu End ***** -->
-                </nav>
-            </div>
-        </div>
-    </div>
+<!-- ***** Header Area Start ***** -->
+<header class="header-area header-fixed">
+  <div class="container">
+      <div class="row">
+          <div class="col-12">
+              <nav class="main-nav">
+                  <a href="{{ url('/') }}" class="logo">
+                      <img src="{{ asset('assets/images/logo-principal.png') }}" alt="GeoLocalyz" style="height: 50px;"/>
+                  </a>
+                  <ul class="nav">
+                      <li><a href="#accueil" class="active">Accueil</a></li>
+                      <li><a href="#features">Fonctionnalités</a></li>
+                      <li><a href="#contact">Contact</a></li>
+                  </ul>
+                  <div class="main-red-button">
+                      <a href="#contact">Commencer</a>
+                  </div>
+              </nav>
+          </div>
+      </div>
+  </div>
 </header>
-  <!-- ***** Header Area End ***** -->
+<!-- ***** Header Area End ***** -->
 
     @yield('content')
 
