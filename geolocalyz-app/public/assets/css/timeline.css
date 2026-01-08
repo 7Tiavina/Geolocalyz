@@ -1,0 +1,86 @@
+
+.timeline-container {
+    position: relative;
+    width: 100%;
+    padding: 50px 0;
+}
+
+.timeline-line {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    width: 4px;
+    height: calc(100% - 100px);
+    background: #f1f1f1;
+    transform: translateX(-50%);
+}
+
+.timeline-step {
+    position: relative;
+    width: 50%;
+    padding: 20px 40px;
+    box-sizing: border-box;
+}
+
+.timeline-step:nth-child(odd) {
+    float: left;
+    text-align: right;
+    clear: both;
+}
+
+.timeline-step:nth-child(even) {
+    float: right;
+    text-align: left;
+    clear: both;
+}
+
+.timeline-step-content {
+    position: relative;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+.timeline-step-number {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background: #fff;
+    border: 4px solid #ed8482;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    font-weight: 700;
+    color: #ed8482;
+}
+
+.timeline-step:nth-child(odd) .timeline-step-number {
+    right: -25px;
+}
+
+.timeline-step:nth-child(even) .timeline-step-number {
+    left: -25px;
+}
+
+.timeline-step-content h4 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #2a2a2a;
+    margin-bottom: 10px;
+}
+
+.timeline-step-content p {
+    font-size: 15px;
+    color: #2a2a2a;
+    line-height: 1.6;
+}
+
+.timeline-step-content img {
+    margin-bottom: 15px;
+    border-radius: 10px;
+}
