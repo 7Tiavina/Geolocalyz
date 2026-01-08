@@ -46,7 +46,7 @@
       <span>#1 Choice in <span class="country-name">Mauritius</span></span>
     </div>
 
-    <p class="text-xs text-slate-900">Ready to find out the location of the phone number?</p>
+    <p class="text-lg text-slate-900">Ready to find out the location of the phone number?</p>
 
     <!-- Sélecteur pays + input -->
     <div class="flex gap-3">
@@ -60,7 +60,7 @@
 
      <!-- Image AOP -->
     <div class="flex gap-4">
-        <img src="{{ asset('assets/images/logo-AOP.png') }}" alt="100 % légal" class="h-20">
+        <img src="{{ asset('assets/images/logo-AOP.png') }}" alt="100 % légal" class="h-24">
     </div>
 
     <p class="text-xs text-slate-400">Confidential & Secure – it doesn’t matter where you are or what device you’re using.</p>
@@ -82,6 +82,7 @@
   const phoneInput = window.intlTelInput(document.querySelector("#phone"), {
     initialCountry: "mu",
     separateDialCode: true,
+    showSelectedDialCode: true,
     utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@19/build/js/utils.js"
   });
   phoneInput.promise.then(() => {
