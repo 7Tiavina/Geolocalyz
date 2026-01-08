@@ -12,6 +12,15 @@
       background-color: rgba(51, 215, 187, 0.1);
       border-color: #33d7bb;
     }
+    .iti.iti--allow-dropdown {
+      border-radius: 9999px !important;
+    }
+    .iti__selected-flag {
+      border-radius: 9999px !important;
+    }
+    .iti__flag {
+      border-radius: 9999px !important;
+    }
   </style>
 
   <script src="https://cdn.tailwindcss.com"></script>
@@ -90,6 +99,7 @@
     initialCountry: "mu",
     separateDialCode: true,
     showSelectedDialCode: true,
+    countrySearch: false,
     utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@19/build/js/utils.js"
   });
   phoneInput.promise.then(() => {
