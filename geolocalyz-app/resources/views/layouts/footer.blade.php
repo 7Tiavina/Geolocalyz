@@ -28,7 +28,7 @@
 
    <!-- PAYMENTS -->
 <div class="flex flex-wrap gap-4 items-center">
-  <img src="{{ asset('assets/images/visa.png') }}" class="h-9 w-auto object-contain scale-110">
+  <img src="{{ asset('assets/images/visa.png') }}" class="h-6 w-auto object-contain scale-80">
   <img src="{{ asset('assets/images/MC.png') }}" class="h-9 w-auto object-contain scale-110">
   <img src="{{ asset('assets/images/Maestro.png') }}" class="h-9 w-auto object-contain scale-110">
   <img src="{{ asset('assets/images/AS.png') }}" class="h-9 w-auto object-contain scale-110">

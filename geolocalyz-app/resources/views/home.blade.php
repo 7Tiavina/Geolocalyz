@@ -33,64 +33,72 @@
 
 <!-- HERO -->
 <section class="max-w-7xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-20 items-center">
-  <div>
-    <h1 class="text-5xl font-extrabold leading-tight mb-6">
-      Localisez <br>
-      un téléphone <br>
-      <span class="text-brand">par son numéro</span>
+  <div class="space-y-6">
+    <h1 class="text-5xl font-extrabold leading-tight">
+      Localisez <br> un téléphone <br>
+      <span class="text-orange-400">par son numéro</span>
     </h1>
 
-    <div class="flex gap-4 mb-6">
-      <span class="bg-brand text-white px-5 py-2 rounded-full text-sm font-medium">
-        🌍 Fonctionne dans le monde entier
-      </span>
+    <!-- Badge dynamique -->
+    <div id="country-badge"
+         class="inline-flex items-center gap-2 bg-gradient-to-r from-amber-400 to-amber-300 text-slate-900 px-4 py-2 rounded-full font-semibold shadow">
+      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a8 8 0 100 16 8 8 0 000-16zm0 14a6 6 0 110-12 6 6 0 010 12zm-1-5h2v2H9v-2zm0-4h2v3H9V7z"/></svg>
+      <span>#1 Choice in <span class="country-name">Mauritius</span></span>
     </div>
 
-    <div class="flex gap-3 mb-6">
-      <input type="text" placeholder="+230 5X XXX XXX"
-        class="border rounded-xl px-4 py-3 w-64 outline-none focus:ring-2 focus:ring-brand">
-      <button class="bg-orange-500 hover:bg-orange-600 text-white px-8 rounded-xl font-semibold">
+    <p class="text-xs text-slate-900">Ready to find out the location of the phone number?</p>
+
+    <!-- Sélecteur pays + input -->
+    <div class="flex gap-3">
+      <input id="phone" type="tel"
+             class="border rounded-xl px-4 py-3 w-full outline-none focus:ring-2 focus:ring-orange-400"
+             placeholder="5X XXX XXXX">
+      <button class="bg-orange-500 hover:bg-orange-600 text-white px-8 rounded-xl font-semibold shadow">
         DÉTECTER
       </button>
     </div>
 
-    <div class="flex gap-6 text-sm text-gray-500">
-      <span>🔒 Sécurisé</span>
-      <span>✔️ 100% Légal</span>
+     <!-- Image AOP -->
+    <div class="flex gap-4">
+        <img src="{{ asset('assets/images/logo-AOP.png') }}" alt="100 % légal" class="h-20">
     </div>
+
+    <p class="text-xs text-slate-400">Confidential & Secure – it doesn’t matter where you are or what device you’re using.</p>
   </div>
 
+  <!-- Colonne Lottie -->
   <div class="relative">
     <div id="lottie-animation" class="w-full h-[420px]"></div>
   </div>
 </section>
 
+<!-- Scripts -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@19/build/css/intlTelInput.css">
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@19/build/js/intlTelInput.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.10.0/lottie.min.js"></script>
+
 <script>
+  /* intl-tel-input */
+  const phoneInput = window.intlTelInput(document.querySelector("#phone"), {
+    initialCountry: "mu",
+    separateDialCode: true,
+    utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@19/build/js/utils.js"
+  });
+  phoneInput.promise.then(() => {
+    document.querySelector("#phone").addEventListener("countrychange", () => {
+      document.querySelector(".country-name").textContent = phoneInput.getSelectedCountryData().name;
+    });
+  });
+
+  /* Lottie */
   lottie.loadAnimation({
     container: document.getElementById('lottie-animation'),
     renderer: 'svg',
     loop: true,
     autoplay: true,
-    path: '{{ asset('assets/images/Lottie.json') }}'
+    path: "{{ asset('assets/images/Lottie.json') }}"
   });
 </script>
-
-<!-- FEATURES SHORT -->
-<section class="max-w-7xl mx-auto px-6 py-28 grid md:grid-cols-2 gap-24 items-center">
-  <div>
-    <h2 class="text-3xl font-bold mb-6">
-      Geolocalyz trouve <br>
-      des informations complètes <br>
-      par numéro de téléphone
-    </h2>
-    <button class="bg-orange-500 text-white px-10 py-4 rounded-xl font-semibold">
-      ESSAYER MAINTENANT
-    </button>
-  </div>
-
-  <img src="{{ asset('assets/images/services-left-image.png') }}" class="w-[420px] mx-auto">
-</section>
 
 <!-- TESTIMONIALS -->
 <section class="max-w-7xl mx-auto px-6 py-28 text-center">
@@ -150,7 +158,7 @@
     <div class="grid md:grid-cols-2 gap-y-40">
 
       <div class="md:pr-32 flex flex-col items-end text-right">
-        <img src="{{ asset('assets/images/Step-1.png') }}" class="w-[520px] max-w-none">
+        <img src="{{ asset('assets/images/Step-1.png') }}" class="w-[450px] max-w-none">
         <h3 class="mt-8 text-xl font-semibold">Numéro de téléphone</h3>
         <p class="text-gray-500 max-w-md">
           Tapez le numéro de téléphone que vous souhaitez localiser.
@@ -169,7 +177,7 @@
       </div>
 
       <div class="md:pr-32 flex flex-col items-end text-right">
-        <img src="{{ asset('assets/images/Step-3.png') }}" class="w-[520px] max-w-none">
+        <img src="{{ asset('assets/images/Step-3.png') }}" class="w-[420px] max-w-none">
         <h3 class="mt-8 text-xl font-semibold">Voir l'emplacement</h3>
         <p class="text-gray-500 max-w-md">
           Affichez l'emplacement du téléphone sur une carte en direct.
