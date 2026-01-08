@@ -147,12 +147,12 @@ body {
 }
 
 ::selection {
-  background: #03a4ed;
+  background: #ed8482;
   color: #fff;
 }
 
 ::-moz-selection {
-  background: #03a4ed;
+  background: #ed8482;
   color: #fff;
 }
 
@@ -189,7 +189,7 @@ body {
 
 .section-heading h2 em {
   font-style: normal;
-  color: #03a4ed;
+  color: #ed8482;
 }
 
 .section-heading h2 span {
@@ -198,7 +198,7 @@ body {
 
 .main-blue-button a {
   display: inline-block;
-  background-color: #03a4ed;
+  background-color: #ed8482;
   font-size: 15px;
   font-weight: 400;
   color: #fff;
@@ -273,7 +273,7 @@ header
     font-size: 24px;
     font-weight: 700;
     text-transform: uppercase;
-    color: #03a4ed;
+    color: #ed8482;
     line-height: 80px;
     float: left;
     -webkit-transition: all 0.3s ease 0s;
@@ -343,7 +343,7 @@ header
 }
 
 .header-area .main-nav .nav li:last-child a:hover {
-  background-color: #03a4ed;
+  background-color: #ed8482;
 }
 
 .header-area .main-nav .nav li.submenu {
@@ -775,7 +775,7 @@ Banner Style
 }
 
 .main-banner .left-content h2 em {
-  color: #03a4ed;
+  color: #ed8482;
   font-style: normal;
 }
 
@@ -814,7 +814,7 @@ Banner Style
 .main-banner .left-content form input {
   width: 470px;
   height: 66px;
-  background-color: #03a4ed;
+  background-color: #ed8482;
   border-radius: 33px;
   border: none;
   outline: none;
@@ -838,7 +838,7 @@ About Us Style
 */
 
 #about {
-  margin-top: 120px;
+  margin-top: 50px;
 }
 
 .about-us {
@@ -913,7 +913,7 @@ Services Style
   top: 0;
   font-size: 18px;
   font-weight: 600;
-  color: #03a4ed;
+  color: #ed8482;
 }
 
 .our-services .first-bar span {
@@ -1287,7 +1287,7 @@ form#contact textarea::placeholder {
 
 form#contact button {
   display: inline-block;
-  background-color: #03a4ed;
+  background-color: #ed8482;
   font-size: 15px;
   font-weight: 400;
   color: #fff;
