@@ -43,7 +43,7 @@
 <!-- HERO -->
 <section class="max-w-7xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-20 items-center">
   <div class="space-y-6">
-    <h1 class="text-5xl font-extrabold leading-tight">
+    <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight">
       Localisez <br> un téléphone <br>
       <span class="text-orange-400">par son numéro</span>
     </h1>
@@ -58,7 +58,7 @@
     <p class="text-lg text-slate-900">Ready to find out the location of the phone number?</p>
 
     <!-- Sélecteur pays + input -->
-    <div class="flex gap-3">
+    <div class="flex flex-col sm:flex-row gap-3">
       <input id="phone" type="tel"
              class="border rounded-xl px-4 py-3 w-full outline-none focus:ring-2 focus:ring-orange-400">
       <button class="bg-orange-500 hover:bg-orange-600 text-white px-8 rounded-xl font-semibold shadow">
@@ -75,8 +75,8 @@
   </div>
 
   <!-- Colonne Lottie -->
-  <div class="relative">
-    <div id="lottie-animation" class="w-full h-[420px]"></div>
+  <div class="relative hidden md:block">
+    <div id="lottie-animation" class="w-full h-[300px] md:h-[420px]"></div>
   </div>
 </section>
 
@@ -150,7 +150,7 @@
       </div>
     </div>
 
-    <div class="relative flex justify-center order-1 lg:order-2">
+    <div class="relative flex justify-center order-3 lg:order-2">
       <div class="absolute inset-0 bg-brand/20 blur-[60px] rounded-full scale-75 lg:scale-100"></div>
 
       <div class="relative w-72 h-[500px] bg-black rounded-[3.5rem] p-1.5 shadow-2xl ring-1 ring-gray-800 z-10 glow-effect">
@@ -162,41 +162,49 @@
           <div class="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-black rounded-b-2xl z-20"></div>
           
           <div class="w-full relative z-10 flex flex-col items-center">
-  <div class="mb-2 mt-2 drop-shadow-md">
-    <svg class="w-5 h-5 text-white/90" fill="currentColor" viewBox="0 0 24 24">
-      <path d="M12 2C9.243 2 7 4.243 7 7v3H6a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2v-8a2 2 0 00-2-2h-1V7c0-2.757-2.243-5-5-5zM9 7c0-1.654 1.346-3 3-3s3 1.346 3 3v3H9V7zm3 11a1.5 1.5 0 110-3 1.5 1.5 0 010 3z"/>
-    </svg>
-  </div>
+            <div class="mb-2 mt-2 drop-shadow-md">
+              <svg class="w-5 h-5 text-white/90" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2C9.243 2 7 4.243 7 7v3H6a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2v-8a2 2 0 00-2-2h-1V7c0-2.757-2.243-5-5-5zM9 7c0-1.654 1.346-3 3-3s3 1.346 3 3v3H9V7zm3 11a1.5 1.5 0 110-3 1.5 1.5 0 010 3z"/>
+              </svg>
+            </div>
 
-  <div class="text-4xl font-bold text-white mb-1 text-center drop-shadow-lg">10:00</div>
-  <p class="text-[10px] text-gray-200 mb-10 text-center uppercase tracking-widest font-bold">Mardi, 11 Septembre</p>
-  
-  <div class="bg-white/95 backdrop-blur-md p-4 rounded-[1.8rem] shadow-xl border border-white/50 w-full">
-     <div class="flex justify-between items-center mb-2">
-       <div class="flex items-center gap-2">
-         <div class="w-5 h-5 bg-brand rounded-md flex items-center justify-center">
-           <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
-         </div>
-         <span class="text-[10px] font-black text-gray-500 uppercase">Messages</span>
-       </div>
-       <span class="text-[9px] text-gray-400">maintenant</span>
-     </div>
-     <p id="phone-msg" class="text-[11px] text-gray-800 leading-snug font-medium">
-       Salut ! Peux-tu partager ta position avec Geolocalyz ? <span class="text-blue-500 font-bold underline">geoloc.ly/track=92...</span>
-     </p>
-  </div>
-</div>
+            <div class="text-4xl font-bold text-white mb-1 text-center drop-shadow-lg">10:00</div>
+            <p class="text-[10px] text-gray-200 mb-10 text-center uppercase tracking-widest font-bold">Mardi, 11 Septembre</p>
+            
+            <div class="bg-white/95 backdrop-blur-md p-4 rounded-[1.8rem] shadow-xl border border-white/50 w-full">
+               <div class="flex justify-between items-center mb-2">
+                 <div class="flex items-center gap-2">
+                   <div class="w-5 h-5 bg-brand rounded-md flex items-center justify-center">
+                     <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+                   </div>
+                   <span class="text-[10px] font-black text-gray-500 uppercase">Messages</span>
+                 </div>
+                 <span class="text-[9px] text-gray-400">maintenant</span>
+               </div>
+               <p id="phone-msg" class="text-[11px] text-gray-800 leading-snug font-medium">
+                 Salut ! Peux-tu partager ta position avec Geolocalyz ? <span class="text-blue-500 font-bold underline">geoloc.ly/track=92...</span>
+               </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="space-y-8 order-3">
-      <h2 id="display-title" class="text-5xl font-black text-gray-900 leading-[1.1] tracking-tight">
+    <div class="space-y-8 order-1 lg:order-3 text-center lg:text-left">
+      <h2 id="display-title" class="text-4xl sm:text-5xl font-black text-gray-900 leading-[1.1] tracking-tight">
         <span class="text-brand">Geolocalyz</span> permet d'obtenir des infos fiables.
       </h2>
       <p id="display-desc" class="text-gray-500 text-xl leading-relaxed">
         Géolocalisez un numéro, identifiez son propriétaire et obtenez des informations utiles instantanément.
       </p>
+      <div class="hidden lg:block pt-4">
+        <button class="bg-orange-500 hover:bg-orange-600 text-white font-black py-5 px-14 rounded-full text-xl transition-all hover:scale-105 shadow-lg shadow-orange-200 uppercase tracking-widest">
+          Essayer
+        </button>
+      </div>
+    </div>
+    
+    <div class="order-4 lg:hidden text-center">
       <button class="bg-orange-500 hover:bg-orange-600 text-white font-black py-5 px-14 rounded-full text-xl transition-all hover:scale-105 shadow-lg shadow-orange-200 uppercase tracking-widest">
         Essayer
       </button>
@@ -250,7 +258,7 @@
     </ul>
   </div>
 
-  <img src="{{ asset('assets/images/about-left-image.png') }}" class="w-[420px] mx-auto">
+  <img src="{{ asset('assets/images/about-left-image.png') }}" class="w-full max-w-[420px] mx-auto">
 </section>
 
 <!-- HOW IT WORKS -->
@@ -264,8 +272,8 @@
 
     <div class="grid md:grid-cols-2 gap-y-40">
 
-      <div class="md:pr-32 flex flex-col items-end text-right">
-        <img src="{{ asset('assets/images/Step-1.png') }}" class="w-[450px] max-w-none">
+      <div class="md:pr-32 flex flex-col items-center text-center md:items-end md:text-right">
+        <img src="{{ asset('assets/images/Step-1.png') }}" class="w-full max-w-[450px]">
         <h3 class="mt-8 text-xl font-semibold">Numéro de téléphone</h3>
         <p class="text-gray-500 max-w-md">
           Tapez le numéro de téléphone que vous souhaitez localiser.
@@ -275,16 +283,16 @@
       <div></div>
       <div></div>
 
-      <div class="md:pl-32 flex flex-col items-start text-left">
-        <img src="{{ asset('assets/images/Step-2.png') }}" class="w-[520px] max-w-none">
+      <div class="md:pl-32 flex flex-col items-center text-center md:items-start md:text-left">
+        <img src="{{ asset('assets/images/Step-2.png') }}" class="w-full max-w-[520px]">
         <h3 class="mt-8 text-xl font-semibold">Envoyer le message</h3>
         <p class="text-gray-500 max-w-md">
           Envoyez un message sécurisé avec un lien de suivi.
         </p>
       </div>
 
-      <div class="md:pr-32 flex flex-col items-end text-right">
-        <img src="{{ asset('assets/images/Step-3.png') }}" class="w-[420px] max-w-none">
+      <div class="md:pr-32 flex flex-col items-center text-center md:items-end md:text-right">
+        <img src="{{ asset('assets/images/Step-3.png') }}" class="w-full max-w-[420px]">
         <h3 class="mt-8 text-xl font-semibold">Voir l'emplacement</h3>
         <p class="text-gray-500 max-w-md">
           Affichez l'emplacement du téléphone sur une carte en direct.
@@ -335,9 +343,9 @@
 
 <!-- CTA -->
 <section class="max-w-7xl mx-auto px-6 py-28 grid md:grid-cols-2 gap-24 items-center">
-  <img src="{{ asset('assets/images/image-women-2.png') }}" class="w-[420px] mx-auto">
+  <img src="{{ asset('assets/images/image-women-2.png') }}" class="w-full max-w-[420px] mx-auto">
 
-  <div>
+  <div class="text-center md:text-left">
     <h2 class="text-4xl font-bold mb-6">
       Prêt à commencer ?
     </h2>
@@ -387,6 +395,14 @@
     document.getElementById('display-desc').innerText = contentData[id].desc;
     document.getElementById('phone-msg').innerHTML = contentData[id].msg;
   }
+</script>
+<script>
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  mobileMenuButton.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
 </script>
 <!-- FOOTER -->
 @include('layouts.footer')
