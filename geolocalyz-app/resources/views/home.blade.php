@@ -60,11 +60,10 @@
     <!-- Sélecteur pays + input -->
     <div class="flex flex-col sm:flex-row gap-3">
       <input id="phone" type="tel"
-             class="border rounded-xl px-4 py-3 w-full outline-none focus:ring-2 focus:ring-orange-400">
-      <button class="bg-orange-500 hover:bg-orange-600 text-white px-8 rounded-xl font-semibold shadow">
+             class="border rounded-full px-14 py-5 text-xl w-full outline-none focus:ring-2 focus:ring-orange-400">
+      <button class="bg-orange-500 hover:bg-orange-600 text-white py-5 px-14 rounded-full text-xl font-black shadow-lg shadow-orange-200 uppercase tracking-widest transition-all hover:scale-105">
         DÉTECTER
-      </button>
-    </div>
+      </button>    </div>
 
      <!-- Image AOP -->
     <div class="flex gap-4">
@@ -349,10 +348,9 @@
     <h2 class="text-4xl font-bold mb-6">
       Prêt à commencer ?
     </h2>
-    <button class="bg-orange-500 text-white px-12 py-4 rounded-xl font-semibold">
+    <button class="bg-orange-500 text-white py-5 px-14 rounded-full text-xl font-black shadow-lg shadow-orange-200 uppercase tracking-widest transition-all hover:scale-105">
       DÉTECTER MAINTENANT
-    </button>
-  </div>
+    </button>  </div>
 </section>
 <script>
   const contentData = {
