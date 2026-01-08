@@ -29,15 +29,7 @@
 </div>
 
 <!-- HEADER -->
-<header class="max-w-7xl mx-auto px-6 py-6 flex justify-between items-center">
-  <div class="font-bold text-2xl text-brand">Geolocalyz</div>
-  <nav class="hidden md:flex gap-10 text-sm font-medium">
-    <a href="#" class="hover:text-brand">Comment ça marche</a>
-    <a href="#" class="hover:text-brand">Fonctionnalités</a>
-    <a href="#" class="hover:text-brand">FAQ</a>
-    <a href="#" class="hover:text-brand">Connexion</a>
-  </nav>
-</header>
+@include('layouts.header')
 
 <!-- HERO -->
 <section class="max-w-7xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-20 items-center">
@@ -241,9 +233,6 @@
 </section>
 
 <!-- FOOTER -->
-<footer class="bg-white py-10 text-center text-sm text-gray-500">
-  © 2026 Geolocalyz. Tous droits réservés.
-</footer>
-
+@include('layouts.footer')
 </body>
 </html>
