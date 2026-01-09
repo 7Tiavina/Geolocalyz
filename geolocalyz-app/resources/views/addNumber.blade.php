@@ -55,7 +55,7 @@
 
 @include('layouts.user.header-user')
 
-<main class="flex-grow flex items-center justify-center px-6 relative pt-12">
+<main id="main-content" class="flex-grow flex items-center justify-center px-6 relative pt-12">
   
   <div class="absolute inset-0 overflow-hidden pointer-events-none">
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand/5 rounded-full blur-[120px]"></div>
@@ -132,5 +132,19 @@
   updateBadge();
 </script>
 
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const header = document.getElementById('user-header');
+    const mainContent = document.getElementById('main-content');
+    if (header && mainContent) {
+      const adjustMainContentPadding = () => {
+        mainContent.style.paddingTop = `${header.offsetHeight}px`;
+      };
+
+      adjustMainContentPadding();
+      window.addEventListener('resize', adjustMainContentPadding);
+    }
+  });
+</script>
 </body>
 </html>

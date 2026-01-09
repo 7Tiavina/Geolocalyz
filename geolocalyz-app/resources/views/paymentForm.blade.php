@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geolocalyz – Localiser un téléphone</title>
+    <link rel="icon" type="image/png" href="{{ asset('assets/images/favicon.png') }}">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -19,71 +21,68 @@
 </head>
 <body class="bg-[#f8fafc] min-h-screen flex flex-col justify-between text-gray-900 font-sans">
 
-    <header class="w-full px-6 py-4">
-      <div class="max-w-7xl mx-auto flex justify-between items-center">
-        <a href="{{ url('/') }}" class="transition-transform hover:scale-105">
-          <img src="{{ asset('assets/images/logo-principal.png') }}" alt="Logo" class="h-6 w-auto">
-        </a>
-        <div class="flex items-center gap-4">
-            <span class="text-[9px] font-black text-brand bg-brand/10 px-2 py-1 rounded-full uppercase">Paiement Sécurisé SSL</span>
-            <a href="{{ url('/') }}" class="text-[9px] font-bold text-gray-400 hover:text-brand uppercase tracking-widest">FR ▾</a>
-        </div>
-      </div>
-    </header>
+    @include('layouts.user.header-user')
 
     <main class="flex-grow flex flex-col items-center justify-center px-4 py-8">
         <div class="max-w-3xl w-full text-center">
             
-            <div class="mb-10">
-                <p class="text-4xl md:text-5xl font-black text-brand tracking-tighter mb-2">+230 5519 3628</p>
+            <div class="mb-10 text-center">
+                <p class="text-4xl md:text-5xl font-black tracking-tighter mb-2">
+                    <span class="text-gray-900">+230</span> 
+                    <span class="text-brand">5519 3628</span>
+                </p>
                 <h1 class="text-xl md:text-2xl font-black text-gray-900 tracking-tight uppercase">
                     La localisation est prête à être affichée
                 </h1>
             </div>
 
-            <div class="bg-white rounded-[3rem] p-8 md:p-12 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.06)] border border-gray-100 mb-8">
-                
-                <form action="#" class="space-y-4 max-w-md mx-auto">
-                    <input type="text" placeholder="NUMÉRO DE CARTE *" 
-                        class="w-full bg-gray-50 border-2 border-transparent focus:border-brand rounded-full py-4 px-8 font-bold text-xs outline-none transition-all shadow-sm uppercase tracking-widest">
+            <div class="relative max-w-2xl mx-auto">
+                <div class="absolute inset-0 bg-brand/20 blur-[100px] rounded-full scale-90 -z-10"></div>
 
-                    <div class="grid grid-cols-2 gap-4">
-                        <input type="text" placeholder="MM / AA *" 
-                            class="w-full bg-gray-50 border-2 border-transparent focus:border-brand rounded-full py-4 px-8 font-bold text-xs outline-none transition-all shadow-sm">
-                        <input type="text" placeholder="CVV / CVC *" 
-                            class="w-full bg-gray-50 border-2 border-transparent focus:border-brand rounded-full py-4 px-8 font-bold text-xs outline-none transition-all shadow-sm">
-                    </div>
+                <div class="bg-white rounded-[3rem] p-8 md:p-12 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.06)] border border-gray-100 mb-8 relative">
+                    
+                    <form action="#" class="space-y-4 max-w-md mx-auto">
+                        <input type="text" placeholder="NUMÉRO DE CARTE *" 
+                            class="w-full bg-gray-50 border-2 border-transparent focus:border-brand rounded-full py-4 px-8 font-bold text-xs outline-none transition-all shadow-sm uppercase tracking-widest">
 
-                    <div class="grid grid-cols-2 gap-4">
-                        <input type="text" placeholder="PRÉNOM *" 
-                            class="w-full bg-gray-50 border-2 border-transparent focus:border-brand rounded-full py-4 px-8 font-bold text-xs outline-none transition-all shadow-sm">
-                        <input type="text" placeholder="NOM *" 
-                            class="w-full bg-gray-50 border-2 border-transparent focus:border-brand rounded-full py-4 px-8 font-bold text-xs outline-none transition-all shadow-sm">
-                    </div>
-
-                    <input type="email" value="edzar@gmail.com" 
-                        class="w-full bg-gray-50 border-2 border-transparent focus:border-brand rounded-full py-4 px-8 font-bold text-xs outline-none transition-all shadow-sm text-gray-400 italic">
-
-                    <div class="pt-6 text-center">
-                        <h3 class="text-[11px] font-black uppercase tracking-widest text-gray-900 mb-2">Détails de la commande :</h3>
-                        <div class="flex justify-between items-center bg-brand/5 px-6 py-3 rounded-2xl mb-6">
-                            <span class="text-xs font-bold text-gray-600">Essai de 24 heures</span>
-                            <span class="text-lg font-black text-brand">0.89€</span>
+                        <div class="grid grid-cols-2 gap-4">
+                            <input type="text" placeholder="MM / AA *" 
+                                class="w-full bg-gray-50 border-2 border-transparent focus:border-brand rounded-full py-4 px-8 font-bold text-xs outline-none transition-all shadow-sm">
+                            <input type="text" placeholder="CVV / CVC *" 
+                                class="w-full bg-gray-50 border-2 border-transparent focus:border-brand rounded-full py-4 px-8 font-bold text-xs outline-none transition-all shadow-sm">
                         </div>
+
+                        <div class="grid grid-cols-2 gap-4">
+                            <input type="text" placeholder="PRÉNOM *" 
+                                class="w-full bg-gray-50 border-2 border-transparent focus:border-brand rounded-full py-4 px-8 font-bold text-xs outline-none transition-all shadow-sm">
+                            <input type="text" placeholder="NOM *" 
+                                class="w-full bg-gray-50 border-2 border-transparent focus:border-brand rounded-full py-4 px-8 font-bold text-xs outline-none transition-all shadow-sm">
+                        </div>
+
+                        <input type="email" value="edzar@gmail.com" 
+                            class="w-full bg-gray-50 border-2 border-transparent focus:border-brand rounded-full py-4 px-8 font-bold text-xs outline-none transition-all shadow-sm text-gray-400 italic">
+
+                        <div class="pt-6 text-center">
+                            <h3 class="text-[11px] font-black uppercase tracking-widest text-gray-900 mb-2">Détails de la commande :</h3>
+                            <div class="flex justify-between items-center bg-brand/5 px-6 py-3 rounded-2xl mb-6">
+                                <span class="text-xs font-bold text-gray-600">Essai de 24 heures</span>
+                                <span class="text-lg font-black text-brand">0.89€</span>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="w-full bg-cta text-white py-6 rounded-full font-black uppercase tracking-widest text-sm shadow-xl shadow-cta/30 hover:scale-[1.02] active:scale-95 transition-all">
+                            Valider la commande
+                        </button>
+                    </form>
+
+                    <div class="mt-10 flex flex-wrap justify-center gap-x-6 gap-y-4 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" class="h-3 w-auto" alt="Visa">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" class="h-5 w-auto" alt="Mastercard">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" class="h-3 w-auto" alt="Paypal">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Apple_Pay_logo.svg" class="h-5 w-auto" alt="Apple Pay">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Google_Pay_Logo.svg" class="h-5 w-auto" alt="Google Pay">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/American_Express_logo.svg" class="h-5 w-auto" alt="Amex">
                     </div>
-
-                    <button type="submit" class="w-full bg-cta text-white py-6 rounded-full font-black uppercase tracking-widest text-sm shadow-xl shadow-cta/30 hover:scale-[1.02] active:scale-95 transition-all">
-                        Valider la commande
-                    </button>
-                </form>
-
-                <div class="mt-10 flex flex-wrap justify-center gap-x-6 gap-y-4 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" class="h-3 w-auto" alt="Visa">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" class="h-5 w-auto" alt="Mastercard">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" class="h-3 w-auto" alt="Paypal">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Apple_Pay_logo.svg" class="h-5 w-auto" alt="Apple Pay">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Google_Pay_Logo.svg" class="h-5 w-auto" alt="Google Pay">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/American_Express_logo.svg" class="h-5 w-auto" alt="Amex">
                 </div>
             </div>
 
@@ -111,16 +110,7 @@
         </div>
     </main>
 
-    <footer class="w-full py-8 px-6 mt-8">
-      <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 opacity-40">
-        <p class="text-[9px] font-bold text-gray-400 uppercase tracking-widest">&copy; 2026 GEOLOCALYZ.COM ALL RIGHTS RESERVED.</p>
-        <nav class="flex flex-wrap justify-center gap-6">
-          <a href="#" class="text-[9px] font-black text-gray-400 hover:text-brand uppercase tracking-widest">Conditions Générales</a>
-          <a href="#" class="text-[9px] font-black text-gray-400 hover:text-brand uppercase tracking-widest">Politique de Confidentialité</a>
-          <a href="#" class="text-[9px] font-black text-gray-400 hover:text-brand uppercase tracking-widest">Contact</a>
-        </nav>
-      </div>
-    </footer>
+    @include('layouts.user.footer-user')
 
 </body>
 </html>

@@ -1,5 +1,5 @@
 <!-- HEADER -->
-<header class="w-full px-6 py-4 absolute top-0 left-0 z-20">
+<header id="user-header" class="w-full px-6 py-4 absolute top-0 left-0 z-20">
   <div class="max-w-7xl mx-auto flex justify-between items-center">
     <a href="{{ url('/') }}" class="transition-transform hover:scale-105 flex-shrink-0">
       <img src="{{ asset('assets/images/logo-principal.png') }}" alt="Logo" class="h-8 w-auto">

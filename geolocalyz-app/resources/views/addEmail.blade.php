@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geolocalyz – Localiser un téléphone</title>
+    <link rel="icon" type="image/png" href="{{ asset('assets/images/favicon.png') }}">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -60,35 +62,39 @@
                     </ul>
                 </div>
 
-                <div class="bg-white rounded-[3rem] p-8 md:p-12 shadow-[0_60px_120px_-20px_rgba(0,0,0,0.1)] border border-gray-100 relative">
+                <div class="relative">
+                    <div class="absolute inset-0 bg-brand/20 blur-[100px] rounded-full scale-90 -z-10"></div>
                     
-                    <div class="flex items-center justify-between mb-10 bg-gray-50 p-6 rounded-[2rem] border border-gray-100">
-                        <div>
-                            <p class="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">Accès 24H</p>
-                            <p class="text-5xl font-black text-brand tracking-tighter">0.89€</p>
-                        </div>
-                        <div class="text-right">
-                            <span class="bg-cta/10 text-cta text-[9px] font-black px-3 py-1 rounded-full uppercase tracking-tighter">Économie 80%</span>
-                            <p class="text-xl font-bold text-gray-300 line-through mt-2">4.99€</p>
-                        </div>
-                    </div>
-
-                    <form action="{{ route('preparePayment') }}" method="GET" class="space-y-6">
-                        <div class="text-left">
-                            <label class="text-[10px] font-black text-gray-500 uppercase tracking-[0.15em] ml-6 mb-3 block">Votre adresse e-mail :</label>
-                            <input type="email" name="email" placeholder="nom@exemple.com" 
-                                class="w-full bg-gray-50 border-2 border-transparent focus:border-brand focus:bg-white rounded-full py-5 px-8 font-bold text-lg text-gray-800 transition-all outline-none shadow-sm">
-                        </div>
+                    <div class="bg-white rounded-[3rem] p-8 md:p-12 shadow-[0_60px_120px_-20px_rgba(0,0,0,0.1)] border border-gray-100 relative">
                         
-                        <button type="submit" class="w-full bg-cta text-white py-6 rounded-full font-black uppercase tracking-widest text-sm shadow-2xl shadow-cta/40 hover:scale-[1.03] active:scale-95 transition-all">
-                            Accéder aux résultats
-                        </button>
-                    </form>
+                        <div class="flex items-center justify-between mb-10 bg-gray-50 p-6 rounded-[2rem] border border-gray-100">
+                            <div>
+                                <p class="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">Accès 24H</p>
+                                <p class="text-5xl font-black text-brand tracking-tighter">0.89€</p>
+                            </div>
+                            <div class="text-right">
+                                <span class="bg-cta/10 text-cta text-[9px] font-black px-3 py-1 rounded-full uppercase tracking-tighter">Économie 80%</span>
+                                <p class="text-xl font-bold text-gray-300 line-through mt-2">4.99€</p>
+                            </div>
+                        </div>
 
-                    <div class="mt-10 flex justify-center gap-6 opacity-30 grayscale">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" class="h-4 w-auto" alt="Visa">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" class="h-5 w-auto" alt="Mastercard">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" class="h-4 w-auto" alt="Paypal">
+                        <form action="{{ route('preparePayment') }}" method="GET" class="space-y-6">
+                            <div class="text-left">
+                                <label class="text-[10px] font-black text-gray-500 uppercase tracking-[0.15em] ml-6 mb-3 block">Votre adresse e-mail :</label>
+                                <input type="email" name="email" placeholder="nom@exemple.com" 
+                                    class="w-full bg-gray-50 border-2 border-transparent focus:border-brand focus:bg-white rounded-full py-5 px-8 font-bold text-lg text-gray-800 transition-all outline-none shadow-sm">
+                            </div>
+                            
+                            <button type="submit" class="w-full bg-cta text-white py-6 rounded-full font-black uppercase tracking-widest text-sm shadow-2xl shadow-cta/40 hover:scale-[1.03] active:scale-95 transition-all">
+                                Accéder aux résultats
+                            </button>
+                        </form>
+
+                        <div class="mt-10 flex justify-center gap-6 opacity-30 grayscale">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" class="h-4 w-auto" alt="Visa">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" class="h-5 w-auto" alt="Mastercard">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" class="h-4 w-auto" alt="Paypal">
+                        </div>
                     </div>
                 </div>
 
