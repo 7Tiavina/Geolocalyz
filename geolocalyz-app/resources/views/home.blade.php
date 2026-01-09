@@ -22,22 +22,6 @@
       border-radius: 9999px !important;
     }
 
-    /* CSS for dynamic header */
-    header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        z-index: 1000; /* Ensure header is above other content */
-        background-color: rgba(255, 255, 255, 0.8); /* Fond blanc semi-transparent */
-        backdrop-filter: blur(8px); /* Effet de flou */
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: add a subtle shadow */
-        transition: transform 0.3s ease-in-out;
-    }
-
-    header.header-hidden {
-        transform: translateY(-100%);
-    }
   </style>
 
   <script src="https://cdn.tailwindcss.com"></script>
@@ -65,6 +49,21 @@
 
 <!-- HEADER -->
 @include('layouts.header')
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const header = document.getElementById('main-header'); // L'ID du header dans header.blade.php
+    const heroSection = document.getElementById('hero-section');
+    if (header && heroSection) {
+      const adjustHeroPadding = () => {
+        heroSection.style.paddingTop = `${header.offsetHeight}px`;
+      };
+
+      adjustHeroPadding();
+      window.addEventListener('resize', adjustHeroPadding);
+    }
+  });
+</script>
 
 <!-- HERO -->
 <section id="hero-section" class="max-w-7xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-20 items-center">
@@ -347,7 +346,7 @@
 </section>
 
 <!-- WHY GEOLOCALYZ -->
-<section class="max-w-7xl mx-auto px-6 py-28 grid lg:grid-cols-2 gap-16 items-center">
+<section id="why-geolocalyz-section" class="max-w-7xl mx-auto px-6 py-28 grid lg:grid-cols-2 gap-16 items-center">
   
   <div class="space-y-10">
     <div>
@@ -421,7 +420,7 @@
 </section>
 
 <!-- HOW IT WORKS -->
-<section class="max-w-7xl mx-auto px-6 py-32 relative overflow-hidden">
+<section id="how-it-works-section" class="max-w-7xl mx-auto px-6 py-32 relative overflow-hidden">
   
   <div class="text-center mb-24">
     <span class="text-brand font-bold uppercase tracking-widest text-sm">Processus</span>
@@ -493,8 +492,15 @@
   </div>
 </section>
 
+<div class="text-center mt-16 mb-16">
+  <a href="#main-cta-section" class="group relative w-full md:w-auto bg-orange-500 text-white py-6 px-16 rounded-full text-xl font-black shadow-[0_20px_40px_rgba(249,115,22,0.3)] uppercase tracking-[0.15em] transition-all duration-300 hover:scale-105 active:scale-95 overflow-hidden inline-block">
+    <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]"></span>
+    <span class="relative z-10">Localiser maintenant</span>
+  </a>
+</div>
+
 <!-- FAQ -->
-<section class="max-w-4xl mx-auto px-6 pb-32">
+<section id="faq-section" class="max-w-4xl mx-auto px-6 pb-32">
   <h2 class="text-center text-3xl font-bold mb-14">FAQ</h2>
 
   <div class="space-y-5">
@@ -531,7 +537,7 @@
 </section>
 
 <!-- CTA -->
-<section class="max-w-7xl mx-auto px-6 py-20 lg:py-28">
+<section id="main-cta-section" class="max-w-7xl mx-auto px-6 py-20 lg:py-28">
   <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
     
     <div class="order-2 md:order-1 relative">
@@ -640,107 +646,6 @@
   });
 </script>
 <!-- FOOTER -->
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const header = document.querySelector('header');
-    const heroSection = document.getElementById('hero-section');
-    if (!header || !heroSection) return;
-
-    let lastScrollY = window.scrollY;
-    let isHeaderVisible = true; // Initial state
-    let mouseIsNearTop = false;
-    let mouseLeaveTimeout;
-    const mouseTriggerHeight = 50; // Pixels from top to trigger header visibility
-
-    const adjustHeroPadding = () => {
-        heroSection.style.paddingTop = `${header.offsetHeight}px`;
-    };
-
-    // Adjust padding initially
-    adjustHeroPadding();
-
-    // Adjust padding on window resize to handle responsive changes
-    window.addEventListener('resize', adjustHeroPadding);
-
-    const setHeaderVisibility = (visible) => {
-        if (visible && !isHeaderVisible) {
-            header.classList.remove('header-hidden');
-            isHeaderVisible = true;
-        } else if (!visible && isHeaderVisible) {
-            header.classList.add('header-hidden');
-            isHeaderVisible = false;
-        }
-    };
-
-    // Throttle function to limit how often a function can run
-    const throttle = (func, limit) => {
-        let inThrottle;
-        return function() {
-            const args = arguments;
-            const context = this;
-            if (!inThrottle) {
-                func.apply(context, args);
-                inThrottle = true;
-                setTimeout(() => inThrottle = false, limit);
-            }
-        }
-    };
-
-    const handleScroll = () => {
-        const currentScrollY = window.scrollY;
-
-        // Always show header if mouse is near top
-        if (mouseIsNearTop) {
-            setHeaderVisibility(true);
-            lastScrollY = currentScrollY; // Update lastScrollY even if mouse is near top
-            return;
-        }
-
-        // Only react to scroll if past the header initial height
-        if (currentScrollY > header.offsetHeight) { // Use current header height
-            if (currentScrollY > lastScrollY) {
-                // Scrolling down
-                setHeaderVisibility(false);
-            } else {
-                // Scrolling up
-                setHeaderVisibility(true);
-            }
-        } else {
-            // At or near the very top of the page, always show header
-            setHeaderVisibility(true);
-        }
-
-        lastScrollY = currentScrollY;
-    };
-
-    window.addEventListener('scroll', throttle(handleScroll, 100)); // Throttle scroll to every 100ms
-
-    window.addEventListener('mousemove', (e) => {
-        if (e.clientY < mouseTriggerHeight) {
-            if (!mouseIsNearTop) {
-                mouseIsNearTop = true;
-                setHeaderVisibility(true);
-            }
-            clearTimeout(mouseLeaveTimeout); // Clear any pending hide
-        } else {
-            if (mouseIsNearTop) {
-                mouseIsNearTop = false;
-                mouseLeaveTimeout = setTimeout(() => {
-                    // Only hide if currently scrolling down and not near the very top
-                    if (window.scrollY > header.offsetHeight && window.scrollY > lastScrollY) { // Use current header height
-                        setHeaderVisibility(false);
-                    }
-                }, 500); // Wait 0.5s before potentially hiding
-            }
-            }
-        });
-
-        // Initial check on load
-        if (window.scrollY > header.offsetHeight) { // Use current header height
-            setHeaderVisibility(false); // Hide if not at the very top on load
-        }
-    });
-</script>
 <!-- FOOTER -->
 @include('layouts.footer')
 </body>

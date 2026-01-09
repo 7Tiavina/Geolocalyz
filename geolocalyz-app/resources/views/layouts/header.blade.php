@@ -7,11 +7,12 @@
     </a>
 
     <nav class="hidden md:flex items-center gap-8">
-      <a href="#how-it-works" class="text-[11px] font-bold text-gray-500 hover:text-brand transition-colors uppercase tracking-[0.1em]">Pourquoi Geolocalyz</a>
-      <a href="#contact" class="text-[11px] font-bold text-gray-500 hover:text-brand transition-colors uppercase tracking-[0.1em]">Contact</a>
-      <a href="#faq" class="text-[11px] font-bold text-gray-500 hover:text-brand transition-colors uppercase tracking-[0.1em]">FAQ</a>
+      <a href="#why-geolocalyz-section" class="text-[10px] font-bold text-gray-500 hover:text-brand transition-colors uppercase tracking-[0.1em]">Pourquoi Geolocalyz</a>
+      <a href="#how-it-works-section" class="text-[10px] font-bold text-gray-500 hover:text-brand transition-colors uppercase tracking-[0.1em]">Comment ça marche</a>
+      <a href="#faq-section" class="text-[10px] font-bold text-gray-500 hover:text-brand transition-colors uppercase tracking-[0.1em]">FAQ</a>
+      <a href="#contact-section" class="text-[10px] font-bold text-gray-500 hover:text-brand transition-colors uppercase tracking-[0.1em]">Contact</a>
       <div class="h-3 w-[1px] bg-gray-200 mx-1"></div>
-      <a href="#" class="text-[11px] font-bold text-gray-500 hover:text-brand transition-colors uppercase tracking-[0.1em]">Connexion</a>
+      <a href="#" class="text-[10px] font-bold text-gray-500 hover:text-brand transition-colors uppercase tracking-[0.1em]">Connexion</a>
       <a href="#" class="bg-brand text-white px-5 py-2.5 rounded-full text-[10px] font-black shadow-lg shadow-brand/20 hover:scale-105 hover:shadow-brand/30 active:scale-95 transition-all uppercase tracking-widest">
         Démarrer
       </a>
@@ -40,11 +41,12 @@
     </div>
 
     <div class="flex flex-col gap-6">
-      <a href="#how-it-works" class="mobile-link text-sm font-bold text-gray-600 uppercase tracking-widest">Pourquoi Geolocalyz</a>
-      <a href="#contact" class="mobile-link text-sm font-bold text-gray-600 uppercase tracking-widest">Contact</a>
-      <a href="#faq" class="mobile-link text-sm font-bold text-gray-600 uppercase tracking-widest">FAQ</a>
+      <a href="#why-geolocalyz-section" class="mobile-link text-xs font-bold text-gray-600 uppercase tracking-widest">Pourquoi Geolocalyz</a>
+      <a href="#how-it-works-section" class="mobile-link text-xs font-bold text-gray-600 uppercase tracking-widest">Comment ça marche</a>
+      <a href="#faq-section" class="mobile-link text-xs font-bold text-gray-600 uppercase tracking-widest">FAQ</a>
+      <a href="#contact-section" class="mobile-link text-xs font-bold text-gray-600 uppercase tracking-widest">Contact</a>
       <hr class="border-gray-50">
-      <a href="#" class="text-sm font-bold text-gray-600 uppercase tracking-widest">Connexion</a>
+      <a href="#" class="text-xs font-bold text-gray-600 uppercase tracking-widest">Connexion</a>
       <a href="#" class="bg-brand text-white py-4 rounded-full text-center text-xs font-black shadow-lg shadow-brand/20 uppercase tracking-widest">
         Démarrer
       </a>
@@ -59,7 +61,8 @@
   const closeBtn = document.getElementById('close-menu');
   const mobileMenu = document.getElementById('mobile-menu');
   const overlay = document.getElementById('menu-overlay');
-  const mobileLinks = document.querySelectorAll('.mobile-link');
+  const mobileLinks = document.querySelectorAll('.mobile-link'); // Already exists
+  const allAnchorLinks = document.querySelectorAll('a[href^="#"]'); // Select all anchor links in the document
 
   // Scroll effect
   window.addEventListener('scroll', () => {
@@ -87,8 +90,28 @@
   closeBtn.addEventListener('click', closeMenu);
   overlay.addEventListener('click', closeMenu);
   
-  // Fermer le menu quand on clique sur un lien (ancre)
-  mobileLinks.forEach(link => {
-    link.addEventListener('click', closeMenu);
+  // Smooth scroll for all anchor links
+  allAnchorLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault(); // Prevent default jump behavior
+      const targetId = this.getAttribute('href').substring(1);
+      const targetElement = document.getElementById(targetId);
+
+      if (targetElement) {
+        targetElement.scrollIntoView({
+          behavior: 'smooth'
+        });
+      }
+
+      // Close mobile menu if clicked from there
+      if (mobileMenu.classList.contains('hidden') === false) { // If menu is open
+        closeMenu();
+      }
+    });
   });
+
+  // Fermer le menu quand on clique sur un lien (ancre) (This was already handled by the above forEach loop for all anchor links)
+  // mobileLinks.forEach(link => {
+  //   link.addEventListener('click', closeMenu);
+  // });
 </script>
