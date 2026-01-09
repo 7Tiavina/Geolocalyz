@@ -51,13 +51,37 @@
                             <div class="w-6 h-6 bg-brand/20 rounded-full flex items-center justify-center text-brand">
                                 <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="4"><path d="M5 13l4 4L19 7"></path></svg>
                             </div>
-                            Position précise sur carte HD
+                            Suivi de localisation en temps réel 24h/24 et 7j/7
                         </li>
                         <li class="flex items-center gap-4 text-gray-600 font-bold text-sm">
                             <div class="w-6 h-6 bg-brand/20 rounded-full flex items-center justify-center text-brand">
                                 <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="4"><path d="M5 13l4 4L19 7"></path></svg>
                             </div>
-                            Modèle & Réseau de l'appareil
+                            Couverture mondiale & multi-opérateurs
+                        </li>
+                        <li class="flex items-center gap-4 text-gray-600 font-bold text-sm">
+                            <div class="w-6 h-6 bg-brand/20 rounded-full flex items-center justify-center text-brand">
+                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="4"><path d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            Fonctionne sur tous les types d'appareils (iOS & Android)
+                        </li>
+                        <li class="flex items-center gap-4 text-gray-600 font-bold text-sm">
+                            <div class="w-6 h-6 bg-brand/20 rounded-full flex items-center justify-center text-brand">
+                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="4"><path d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            100% Anonyme & Indétectable
+                        </li>
+                        <li class="flex items-center gap-4 text-gray-600 font-bold text-sm">
+                            <div class="w-6 h-6 bg-brand/20 rounded-full flex items-center justify-center text-brand">
+                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="4"><path d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            Historique des positions & rapports détaillés
+                        </li>
+                        <li class="flex items-center gap-4 text-gray-600 font-bold text-sm">
+                            <div class="w-6 h-6 bg-brand/20 rounded-full flex items-center justify-center text-brand">
+                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="4"><path d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            Modèle & Opérateur du téléphone ciblé
                         </li>
                     </ul>
                 </div>

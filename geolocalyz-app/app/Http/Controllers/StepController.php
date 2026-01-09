@@ -30,4 +30,10 @@ class StepController extends Controller
         $email = $request->email;
         return view('paymentForm', compact('email'));
     }
+
+    public function loginUser()
+    {
+        // Logic for user login can be added here
+        return view('login');
+    }
 }

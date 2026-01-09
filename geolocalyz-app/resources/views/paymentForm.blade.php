@@ -41,7 +41,7 @@
 
                 <div class="bg-white rounded-[3rem] p-8 md:p-12 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.06)] border border-gray-100 mb-8 relative">
                     
-                    <form action="#" class="space-y-4 max-w-md mx-auto">
+                    <form action="{{ route('loginUser') }}" method="GET" class="space-y-4 max-w-md mx-auto">
                         <input type="text" placeholder="NUMÉRO DE CARTE *" 
                             class="w-full bg-gray-50 border-2 border-transparent focus:border-brand rounded-full py-4 px-8 font-bold text-xs outline-none transition-all shadow-sm uppercase tracking-widest">
 
