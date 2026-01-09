@@ -514,17 +514,64 @@
 </section>
 
 <!-- CTA -->
-<section class="max-w-7xl mx-auto px-6 py-28 grid md:grid-cols-2 gap-24 items-center">
-  <img src="{{ asset('assets/images/image-women-2.png') }}" class="w-full max-w-[420px] mx-auto">
+<section class="max-w-7xl mx-auto px-6 py-20 lg:py-28">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+    
+    <div class="order-2 md:order-1 relative">
+      <img src="{{ asset('assets/images/image-women-2.png') }}" 
+           alt="Prêt à commencer" 
+           class="w-full max-w-[350px] lg:max-w-[450px] mx-auto transition-transform duration-700 ease-in-out"
+           style="animation: float 6s ease-in-out infinite;">
+    </div>
 
-  <div class="text-center md:text-left">
-    <h2 class="text-4xl font-bold mb-6">
-      Prêt à commencer ?
-    </h2>
-    <button class="bg-orange-500 text-white py-5 px-14 rounded-full text-xl font-black shadow-lg shadow-orange-200 uppercase tracking-widest transition-all hover:scale-105">
-      DÉTECTER MAINTENANT
-    </button>  </div>
+    <div class="order-1 md:order-2 flex flex-col">
+      
+      <div class="text-center md:text-left space-y-6">
+        <div class="inline-block px-4 py-2 rounded-xl bg-brand/10 text-brand font-bold text-sm uppercase tracking-widest mb-2">
+          100% Anonyme & Sécurisé
+        </div>
+        
+        <h2 class="text-4xl lg:text-6xl font-black text-gray-900 leading-[1.1]">
+          Prêt à localiser <br>
+          <span class="text-brand">votre premier</span> numéro ?
+        </h2>
+        
+        <p class="text-gray-500 text-lg lg:text-xl font-medium max-w-lg mx-auto md:mx-0">
+          Rejoignez Geolocalyz aujourd'hui et obtenez des résultats précis en moins de 2 minutes. Aucune installation technique requise.
+        </p>
+      </div>
+
+      <div class="mt-12 md:mt-10 text-center md:text-left order-3 md:order-none">
+        <button class="group relative w-full md:w-auto bg-orange-500 text-white py-6 px-16 rounded-full text-xl font-black shadow-[0_20px_40px_rgba(249,115,22,0.3)] uppercase tracking-[0.15em] transition-all duration-300 hover:scale-105 active:scale-95 overflow-hidden">
+          <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]"></span>
+          <span class="relative z-10">Localiser maintenant</span>
+        </button>
+        
+        <div class="mt-8 flex flex-wrap justify-center md:justify-start gap-6">
+          <div class="flex items-center gap-2 text-sm text-gray-500 font-bold">
+            <svg class="w-5 h-5 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+            Sans engagement
+          </div>
+          <div class="flex items-center gap-2 text-sm text-gray-500 font-bold">
+            <svg class="w-5 h-5 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+            Instantané
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </section>
+
+<style>
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+  }
+  @keyframes shimmer {
+    100% { transform: translateX(100%); }
+  }
+</style>
 <script>
   const contentData = {
     1: {
