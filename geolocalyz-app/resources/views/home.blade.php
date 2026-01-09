@@ -225,49 +225,182 @@
 
 
 <!-- TESTIMONIALS -->
-<section class="max-w-7xl mx-auto px-6 py-28 text-center">
-  <h2 class="text-3xl font-bold mb-16">
-    Écoutez directement <br>
-    les vrais utilisateurs de <span class="text-brand">Geolocalyz</span>
-  </h2>
+<section class="max-w-7xl mx-auto px-6 py-28 relative">
+  
+  <div class="text-center max-w-2xl mx-auto mb-20 relative z-10">
+    <h2 class="text-4xl lg:text-5xl font-black text-gray-900 leading-tight">
+      Écoutez directement les vrais utilisateurs de 
+      <span class="text-brand">Geolocalyz</span>
+    </h2>
+    <p class="text-gray-500 mt-6 font-medium text-lg">
+      Rejoignez des milliers de personnes qui font confiance à notre technologie.
+    </p>
+  </div>
 
-  <div class="grid md:grid-cols-3 gap-10">
-    <div class="bg-white p-8 rounded-2xl shadow-lg">
-      ⭐⭐⭐⭐⭐
-      <p class="mt-4 text-sm text-gray-600">
-        Super expérience, super rapide et précis.
-      </p>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 relative z-10">
+    
+    <div class="relative group">
+      <div class="absolute -inset-2 bg-brand/20 blur-2xl rounded-[3rem] opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+      
+      <div class="relative bg-white p-8 rounded-[2.5rem] shadow-[0_15px_40px_rgba(0,0,0,0.04)] border border-gray-100 
+                  transition-all duration-500 ease-out 
+                  group-hover:-translate-y-4 group-hover:bg-brand/5 group-hover:border-brand/20">
+        
+        <div class="flex gap-1 mb-5">
+          <span class="text-brand text-xl">★</span>
+          <span class="text-brand text-xl">★</span>
+          <span class="text-brand text-xl">★</span>
+          <span class="text-brand text-xl">★</span>
+          <span class="text-brand text-xl">★</span>
+        </div>
+
+        <p class="text-gray-700 leading-relaxed font-medium mb-8 transition-colors group-hover:text-gray-900">
+          "Super expérience, le service est extrêmement rapide et d'une précision chirurgicale. J'ai pu localiser mon fils en un clin d'œil."
+        </p>
+
+        <div class="flex items-center gap-4 border-t border-gray-100 pt-6 transition-colors group-hover:border-brand/10">
+          <div class="w-12 h-12 rounded-full bg-brand/10 flex items-center justify-center font-bold text-brand shadow-sm">JD</div>
+          <div>
+            <h4 class="font-bold text-gray-900 text-sm">Jean Dupont</h4>
+            <p class="text-xs text-brand font-bold uppercase tracking-wider">Vérifié</p>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="bg-white p-8 rounded-2xl shadow-lg">
-      ⭐⭐⭐⭐⭐
-      <p class="mt-4 text-sm text-gray-600">
-        Facile à utiliser et très fiable.
-      </p>
+
+    <div class="relative group">
+      <div class="absolute -inset-2 bg-brand/25 blur-3xl rounded-[3rem] opacity-40 group-hover:opacity-100 transition-all duration-500"></div>
+      
+      <div class="relative bg-white p-8 rounded-[2.5rem] shadow-[0_15px_40px_rgba(0,0,0,0.06)] border border-brand/20
+                  transition-all duration-500 ease-out lg:-translate-y-4
+                  group-hover:-translate-y-8 group-hover:bg-brand/5">
+        
+        <div class="flex gap-1 mb-5">
+          <span class="text-brand text-xl">★</span>
+          <span class="text-brand text-xl">★</span>
+          <span class="text-brand text-xl">★</span>
+          <span class="text-brand text-xl">★</span>
+          <span class="text-brand text-xl">★</span>
+        </div>
+
+        <p class="text-gray-700 leading-relaxed font-medium mb-8">
+          "L'interface est très facile à utiliser, même pour quelqu'un qui n'est pas technophile. Service très fiable et sécurisé."
+        </p>
+
+        <div class="flex items-center gap-4 border-t border-gray-100 pt-6">
+          <div class="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center font-bold text-orange-500 shadow-sm">ML</div>
+          <div>
+            <h4 class="font-bold text-gray-900 text-sm">Marie Lefebvre</h4>
+            <p class="text-xs text-brand font-bold uppercase tracking-wider">Vérifié</p>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="bg-white p-8 rounded-2xl shadow-lg">
-      ⭐⭐⭐⭐⭐
-      <p class="mt-4 text-sm text-gray-600">
-        M'a aidé à localiser un téléphone en quelques minutes.
-      </p>
+
+    <div class="relative group">
+      <div class="absolute -inset-2 bg-brand/20 blur-2xl rounded-[3rem] opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+      
+      <div class="relative bg-white p-8 rounded-[2.5rem] shadow-[0_15px_40px_rgba(0,0,0,0.04)] border border-gray-100 
+                  transition-all duration-500 ease-out 
+                  group-hover:-translate-y-4 group-hover:bg-brand/5 group-hover:border-brand/20">
+        
+        <div class="flex gap-1 mb-5">
+          <span class="text-brand text-xl">★</span>
+          <span class="text-brand text-xl">★</span>
+          <span class="text-brand text-xl">★</span>
+          <span class="text-brand text-xl">★</span>
+          <span class="text-brand text-xl">★</span>
+        </div>
+
+        <p class="text-gray-700 leading-relaxed font-medium mb-8">
+          "M'a sauvé la mise pour localiser un téléphone perdu en quelques minutes seulement. Je recommande Geolocalyz à 100% !"
+        </p>
+
+        <div class="flex items-center gap-4 border-t border-gray-100 pt-6 transition-colors group-hover:border-brand/10">
+          <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center font-bold text-blue-500 shadow-sm">TM</div>
+          <div>
+            <h4 class="font-bold text-gray-900 text-sm">Thomas Martin</h4>
+            <p class="text-xs text-brand font-bold uppercase tracking-wider">Vérifié</p>
+          </div>
+        </div>
+      </div>
     </div>
+
   </div>
 </section>
 
 <!-- WHY GEOLOCALYZ -->
-<section class="max-w-7xl mx-auto px-6 py-28 grid md:grid-cols-2 gap-24 items-center">
-  <div>
-    <h2 class="text-3xl font-bold mb-10">Pourquoi Geolocalyz ?</h2>
+<section class="max-w-7xl mx-auto px-6 py-28 grid lg:grid-cols-2 gap-16 items-center">
+  
+  <div class="space-y-10">
+    <div>
+      <h2 class="text-4xl lg:text-5xl font-black text-gray-900 leading-tight mb-6">
+        Pourquoi choisir <span class="text-brand">Geolocalyz</span> ?
+      </h2>
+      <p class="text-gray-500 text-lg font-medium">
+        La solution la plus avancée pour localiser vos proches en toute sécurité, sans barrière technique.
+      </p>
+    </div>
 
-    <ul class="space-y-6 text-sm">
-      <li>🛡️ Confidentialité totale</li>
-      <li>📍 Localisation en temps réel</li>
-      <li>🌍 Fonctionne dans le monde entier</li>
-      <li>⚡ Rapide & précis</li>
-      <li>📱 Aucune application requise</li>
-    </ul>
+    <div class="space-y-8">
+      
+      <div class="flex items-start gap-5 group">
+        <div class="flex-shrink-0 w-12 h-12 rounded-2xl bg-brand/10 flex items-center justify-center text-brand transition-transform group-hover:scale-110">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+          </svg>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 text-lg">Confidentialité totale</h3>
+          <p class="text-gray-500 text-sm leading-relaxed mt-1">Vos recherches sont anonymes. Aucune donnée n'est partagée avec des tiers et vos traces sont effacées après usage.</p>
+        </div>
+      </div>
+
+      <div class="flex items-start gap-5 group">
+        <div class="flex-shrink-0 w-12 h-12 rounded-2xl bg-brand/10 flex items-center justify-center text-brand transition-transform group-hover:scale-110">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+          </svg>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 text-lg">Localisation en temps réel</h3>
+          <p class="text-gray-500 text-sm leading-relaxed mt-1">Obtenez une position précise sur une carte interactive dès que le destinataire valide le lien sécurisé.</p>
+        </div>
+      </div>
+
+      <div class="flex items-start gap-5 group">
+        <div class="flex-shrink-0 w-12 h-12 rounded-2xl bg-brand/10 flex items-center justify-center text-brand transition-transform group-hover:scale-110">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 text-lg">Couverture mondiale</h3>
+          <p class="text-gray-500 text-sm leading-relaxed mt-1">Peu importe l'opérateur ou le pays, notre service fonctionne partout où il y a une connexion internet.</p>
+        </div>
+      </div>
+
+      <div class="flex items-start gap-5 group">
+        <div class="flex-shrink-0 w-12 h-12 rounded-2xl bg-brand/10 flex items-center justify-center text-brand transition-transform group-hover:scale-110">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+          </svg>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 text-lg">Aucune application requise</h3>
+          <p class="text-gray-500 text-sm leading-relaxed mt-1">Pas besoin d'installer de logiciel sur votre téléphone ou sur celui de la personne à localiser.</p>
+        </div>
+      </div>
+
+    </div>
   </div>
 
-  <img src="{{ asset('assets/images/about-left-image.png') }}" class="w-full max-w-[420px] mx-auto">
+  <div class="relative">
+    <img src="{{ asset('assets/images/about-left-image.png') }}" 
+         alt="About Geolocalyz" 
+         class="w-full max-w-[500px] mx-auto transition-transform duration-500 hover:scale-105">
+  </div>
+
 </section>
 
 <!-- HOW IT WORKS -->
