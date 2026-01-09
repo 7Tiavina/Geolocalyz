@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Geolocalyz – Localiser un téléphone</title>
+  <link rel="icon" type="image/png" href="{{ asset('assets/images/favicon.png') }}">
   <style>
     .glow-effect {
       box-shadow: 0 0 50px 10px rgba(51, 215, 187, 0.3);
@@ -645,7 +646,6 @@
     mobileMenu.classList.toggle('hidden');
   });
 </script>
-<!-- FOOTER -->
 <!-- FOOTER -->
 @include('layouts.footer')
 </body>
