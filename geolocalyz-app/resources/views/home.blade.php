@@ -404,44 +404,74 @@
 </section>
 
 <!-- HOW IT WORKS -->
-<section class="max-w-7xl mx-auto px-6 py-32">
-  <h2 class="text-center text-3xl font-bold text-brand mb-32">
-    Comment ça marche
-  </h2>
+<section class="max-w-7xl mx-auto px-6 py-32 relative overflow-hidden">
+  
+  <div class="text-center mb-24">
+    <span class="text-brand font-bold uppercase tracking-widest text-sm">Processus</span>
+    <h2 class="text-4xl lg:text-5xl font-black text-gray-900 mt-2">
+      Comment fonctionne <span class="text-brand">Geolocalyz</span> ?
+    </h2>
+  </div>
 
   <div class="relative">
-    <div class="hidden md:block absolute left-1/2 top-0 h-full border-l-2 border-dashed border-brand"></div>
+    <div class="hidden lg:block absolute left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-brand/0 via-brand/40 to-brand/0 -translate-x-1/2"></div>
 
-    <div class="grid md:grid-cols-2 gap-y-40">
-
-      <div class="md:pr-32 flex flex-col items-center text-center md:items-end md:text-right">
-        <img src="{{ asset('assets/images/Step-1.png') }}" class="w-full max-w-[450px]">
-        <h3 class="mt-8 text-xl font-semibold">Numéro de téléphone</h3>
-        <p class="text-gray-500 max-w-md">
-          Tapez le numéro de téléphone que vous souhaitez localiser.
-        </p>
+    <div class="space-y-32">
+      
+      <div class="relative grid lg:grid-cols-2 gap-12 items-center text-center lg:text-right">
+        <div class="hidden lg:flex absolute left-1/2 -translate-x-1/2 w-12 h-12 bg-white border-4 border-brand rounded-full items-center justify-center font-black text-brand z-10 shadow-lg shadow-brand/20">1</div>
+        
+        <div class="lg:pr-24 order-2 lg:order-1 flex flex-col items-center lg:items-end">
+          <div class="inline-flex p-3 rounded-2xl bg-brand/10 text-brand mb-6">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+          </div>
+          <h3 class="text-2xl font-black text-gray-900 mb-4">Indiquez le numéro</h3>
+          <p class="text-gray-500 text-lg leading-relaxed max-w-md">
+            Saisissez simplement le numéro de téléphone que vous souhaitez localiser. Notre système s'adapte automatiquement à l'indicatif international.
+          </p>
+        </div>
+        
+        <div class="order-1 lg:order-2">
+          <img src="{{ asset('assets/images/Step-1.png') }}" alt="Étape 1" class="w-full max-w-[400px] mx-auto drop-shadow-2xl hover:scale-105 transition-transform duration-500">
+        </div>
       </div>
 
-      <div></div>
-      <div></div>
+      <div class="relative grid lg:grid-cols-2 gap-12 items-center text-center lg:text-left">
+        <div class="hidden lg:flex absolute left-1/2 -translate-x-1/2 w-12 h-12 bg-white border-4 border-brand rounded-full items-center justify-center font-black text-brand z-10 shadow-lg shadow-brand/20">2</div>
+        
+        <div class="order-1">
+          <img src="{{ asset('assets/images/Step-2.png') }}" alt="Étape 2" class="w-full max-w-[400px] mx-auto drop-shadow-2xl hover:scale-105 transition-transform duration-500">
+        </div>
 
-      <div class="md:pl-32 flex flex-col items-center text-center md:items-start md:text-left">
-        <img src="{{ asset('assets/images/Step-2.png') }}" class="w-full max-w-[520px]">
-        <h3 class="mt-8 text-xl font-semibold">Envoyer le message</h3>
-        <p class="text-gray-500 max-w-md">
-          Envoyez un message sécurisé avec un lien de suivi.
-        </p>
+        <div class="lg:pl-24 order-2 flex flex-col items-center lg:items-start">
+          <div class="inline-flex p-3 rounded-2xl bg-brand/10 text-brand mb-6">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <h3 class="text-2xl font-black text-gray-900 mb-4">Envoyez le message</h3>
+          <p class="text-gray-500 text-lg leading-relaxed max-w-md">
+            Personnalisez ou utilisez notre message type sécurisé contenant le lien de suivi. Une fois envoyé, le destinataire reçoit une notification SMS instantanée.
+          </p>
+        </div>
       </div>
 
-      <div class="md:pr-32 flex flex-col items-center text-center md:items-end md:text-right">
-        <img src="{{ asset('assets/images/Step-3.png') }}" class="w-full max-w-[420px]">
-        <h3 class="mt-8 text-xl font-semibold">Voir l'emplacement</h3>
-        <p class="text-gray-500 max-w-md">
-          Affichez l'emplacement du téléphone sur une carte en direct.
-        </p>
+      <div class="relative grid lg:grid-cols-2 gap-12 items-center text-center lg:text-right">
+        <div class="hidden lg:flex absolute left-1/2 -translate-x-1/2 w-12 h-12 bg-white border-4 border-brand rounded-full items-center justify-center font-black text-brand z-10 shadow-lg shadow-brand/20">3</div>
+        
+        <div class="lg:pr-24 order-2 lg:order-1 flex flex-col items-center lg:items-end">
+          <div class="inline-flex p-3 rounded-2xl bg-brand/10 text-brand mb-6">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <h3 class="text-2xl font-black text-gray-900 mb-4">Suivez sur la carte</h3>
+          <p class="text-gray-500 text-lg leading-relaxed max-w-md">
+            Dès que le lien est ouvert, la position s'affiche en temps réel sur votre tableau de bord. Précis, rapide et extrêmement fiable.
+          </p>
+        </div>
+
+        <div class="order-1 lg:order-2">
+          <img src="{{ asset('assets/images/Step-3.png') }}" alt="Étape 3" class="w-full max-w-[400px] mx-auto drop-shadow-2xl hover:scale-105 transition-transform duration-500">
+        </div>
       </div>
 
-      <div></div>
     </div>
   </div>
 </section>
