@@ -24,4 +24,10 @@ class StepController extends Controller
     {
         return view('addEmail');
     }
+
+    public function PreparePayment(Request $request)
+    {
+        $email = $request->email;
+        return view('paymentForm', compact('email'));
+    }
 }

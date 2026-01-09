@@ -13,4 +13,4 @@ Route::get('/search-number', [StepController::class, 'searchNumber'])->name('sea
 
 Route::get('/add-email', [StepController::class, 'addEmail'])->name('addEmail');
 
-Route::get('/payment-geolocalyz', [StepController::class, 'PreparePayment'])->name('PreparePayment');
+Route::get('/payment-geolocalyz', [StepController::class, 'PreparePayment'])->name('preparePayment');
