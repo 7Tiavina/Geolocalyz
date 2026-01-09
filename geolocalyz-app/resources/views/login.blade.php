@@ -56,7 +56,7 @@
 
                 <div class="px-6 pb-8">
                     <div id="login-form" class="form-transition">
-                        <form action="#" class="space-y-4">
+                        <form action="{{ route('accessDashboard') }}" method="GET" class="space-y-4">
                             <input type="email" placeholder="E-MAIL" 
                                 class="w-full bg-gray-50 border-2 border-transparent focus:border-brand rounded-full py-4 px-8 font-bold text-xs outline-none transition-all shadow-sm">
                             
@@ -75,7 +75,7 @@
                     </div>
 
                     <div id="register-form" class="form-transition hidden-form">
-                        <form action="#" class="space-y-4">
+                        <form action="{{ route('accessDashboard') }}" method="GET" class="space-y-4">
                             <div class="grid grid-cols-2 gap-3">
                                 <input type="text" placeholder="PRÉNOM" class="w-full bg-gray-50 border-2 border-transparent focus:border-brand rounded-full py-4 px-6 font-bold text-xs outline-none shadow-sm uppercase">
                                 <input type="text" placeholder="NOM" class="w-full bg-gray-50 border-2 border-transparent focus:border-brand rounded-full py-4 px-6 font-bold text-xs outline-none shadow-sm uppercase">

@@ -36,4 +36,10 @@ class StepController extends Controller
         // Logic for user login can be added here
         return view('login');
     }
+    
+    public function accessDashboard()
+    {
+        // Logic for accessing the dashboard can be added here
+        return view('dashboardUser');
+    }
 }
