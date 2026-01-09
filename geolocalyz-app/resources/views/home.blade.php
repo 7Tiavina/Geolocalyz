@@ -67,7 +67,7 @@
 
 <!-- HERO -->
 <section id="hero-section" class="max-w-7xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-20 items-center">
-  <div class="space-y-6">
+  <div class="space-y-6 text-center mx-auto max-w-lg md:text-left md:mx-0 md:max-w-none">
     <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight">
       Localisez <br> un téléphone <br>
       <span class="text-orange-400">par son numéro</span>
@@ -83,10 +83,10 @@
     <p class="text-lg text-slate-900">Ready to find out the location of the phone number?</p>
 
     <!-- Sélecteur pays + input -->
-    <div class="flex flex-col sm:flex-row gap-3">
+    <div class="flex flex-col sm:flex-row gap-3 w-full max-w-sm mx-auto sm:max-w-none sm:mx-0">
       <input id="phone" type="tel"
-             class="border rounded-full px-14 py-5 text-xl w-full outline-none focus:ring-2 focus:ring-orange-400">
-      <button class="bg-orange-500 hover:bg-orange-600 text-white py-5 px-14 rounded-full text-xl font-black shadow-lg shadow-orange-200 uppercase tracking-widest transition-all hover:scale-105">
+             class="border rounded-full px-14 py-5 text-xl w-full sm:w-auto outline-none focus:ring-2 focus:ring-orange-400">
+      <button class="bg-orange-500 hover:bg-orange-600 text-white py-5 px-14 rounded-full text-xl font-black shadow-lg shadow-orange-200 uppercase tracking-widest transition-all hover:scale-105 w-full sm:w-auto">
         DÉTECTER
       </button>    </div>
 
@@ -493,7 +493,7 @@
 </section>
 
 <div class="text-center mt-16 mb-16">
-  <a href="#main-cta-section" class="group relative w-full md:w-auto bg-orange-500 text-white py-6 px-16 rounded-full text-xl font-black shadow-[0_20px_40px_rgba(249,115,22,0.3)] uppercase tracking-[0.15em] transition-all duration-300 hover:scale-105 active:scale-95 overflow-hidden inline-block">
+  <a href="#main-cta-section" class="group relative w-full max-w-sm mx-auto md:w-auto md:max-w-none bg-orange-500 text-white py-6 px-16 rounded-full text-xl font-black shadow-[0_20px_40px_rgba(249,115,22,0.3)] uppercase tracking-[0.15em] transition-all duration-300 hover:scale-105 active:scale-95 overflow-hidden inline-block">
     <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]"></span>
     <span class="relative z-10">Localiser maintenant</span>
   </a>
@@ -565,7 +565,7 @@
       </div>
 
       <div class="mt-12 md:mt-10 text-center md:text-left order-3 md:order-none">
-        <button class="group relative w-full md:w-auto bg-orange-500 text-white py-6 px-16 rounded-full text-xl font-black shadow-[0_20px_40px_rgba(249,115,22,0.3)] uppercase tracking-[0.15em] transition-all duration-300 hover:scale-105 active:scale-95 overflow-hidden">
+        <button class="group relative w-full max-w-sm mx-auto md:w-auto md:max-w-none bg-orange-500 text-white py-6 px-16 rounded-full text-xl font-black shadow-[0_20px_40px_rgba(249,115,22,0.3)] uppercase tracking-[0.15em] transition-all duration-300 hover:scale-105 active:scale-95 overflow-hidden">
           <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]"></span>
           <span class="relative z-10">Localiser maintenant</span>
         </button>
