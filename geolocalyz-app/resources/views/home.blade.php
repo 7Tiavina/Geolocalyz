@@ -67,7 +67,7 @@
 @include('layouts.header')
 
 <!-- HERO -->
-<section class="max-w-7xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-20 items-center">
+<section id="hero-section" class="max-w-7xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-20 items-center">
   <div class="space-y-6">
     <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight">
       Localisez <br> un téléphone <br>
@@ -643,14 +643,24 @@
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const header = document.querySelector('header');
-    if (!header) return;
+    const heroSection = document.getElementById('hero-section');
+    if (!header || !heroSection) return;
 
     let lastScrollY = window.scrollY;
     let isHeaderVisible = true; // Initial state
     let mouseIsNearTop = false;
     let mouseLeaveTimeout;
-    const headerHeight = header.offsetHeight;
     const mouseTriggerHeight = 50; // Pixels from top to trigger header visibility
+
+    const adjustHeroPadding = () => {
+        heroSection.style.paddingTop = `${header.offsetHeight}px`;
+    };
+
+    // Adjust padding initially
+    adjustHeroPadding();
+
+    // Adjust padding on window resize to handle responsive changes
+    window.addEventListener('resize', adjustHeroPadding);
 
     const setHeaderVisibility = (visible) => {
         if (visible && !isHeaderVisible) {
@@ -687,7 +697,7 @@
         }
 
         // Only react to scroll if past the header initial height
-        if (currentScrollY > headerHeight) {
+        if (currentScrollY > header.offsetHeight) { // Use current header height
             if (currentScrollY > lastScrollY) {
                 // Scrolling down
                 setHeaderVisibility(false);
@@ -717,7 +727,7 @@
                 mouseIsNearTop = false;
                 mouseLeaveTimeout = setTimeout(() => {
                     // Only hide if currently scrolling down and not near the very top
-                    if (window.scrollY > headerHeight && window.scrollY > lastScrollY) {
+                    if (window.scrollY > header.offsetHeight && window.scrollY > lastScrollY) { // Use current header height
                         setHeaderVisibility(false);
                     }
                 }, 500); // Wait 0.5s before potentially hiding
@@ -726,7 +736,7 @@
         });
 
         // Initial check on load
-        if (window.scrollY > headerHeight) {
+        if (window.scrollY > header.offsetHeight) { // Use current header height
             setHeaderVisibility(false); // Hide if not at the very top on load
         }
     });
