@@ -20,4 +20,8 @@ class StepController extends Controller
         return view('searchNumber', compact('phone'));
     }
 
+    public function addEmail()
+    {
+        return view('addEmail');
+    }
 }

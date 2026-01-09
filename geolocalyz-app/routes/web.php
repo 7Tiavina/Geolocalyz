@@ -10,3 +10,7 @@ Route::get('/', function () {
 Route::get('/add-number', [StepController::class, 'index'])->name('addNumber');
 
 Route::get('/search-number', [StepController::class, 'searchNumber'])->name('searchNumber');
+
+Route::get('/add-email', [StepController::class, 'addEmail'])->name('addEmail');
+
+Route::get('/payment-geolocalyz', [StepController::class, 'PreparePayment'])->name('PreparePayment');
