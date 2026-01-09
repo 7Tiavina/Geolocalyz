@@ -21,6 +21,23 @@
     .iti__flag {
       border-radius: 9999px !important;
     }
+
+    /* CSS for dynamic header */
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000; /* Ensure header is above other content */
+        background-color: rgba(255, 255, 255, 0.8); /* Fond blanc semi-transparent */
+        backdrop-filter: blur(8px); /* Effet de flou */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: add a subtle shadow */
+        transition: transform 0.3s ease-in-out;
+    }
+
+    header.header-hidden {
+        transform: translateY(-100%);
+    }
   </style>
 
   <script src="https://cdn.tailwindcss.com"></script>
@@ -621,6 +638,98 @@
   mobileMenuButton.addEventListener('click', () => {
     mobileMenu.classList.toggle('hidden');
   });
+</script>
+<!-- FOOTER -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const header = document.querySelector('header');
+    if (!header) return;
+
+    let lastScrollY = window.scrollY;
+    let isHeaderVisible = true; // Initial state
+    let mouseIsNearTop = false;
+    let mouseLeaveTimeout;
+    const headerHeight = header.offsetHeight;
+    const mouseTriggerHeight = 50; // Pixels from top to trigger header visibility
+
+    const setHeaderVisibility = (visible) => {
+        if (visible && !isHeaderVisible) {
+            header.classList.remove('header-hidden');
+            isHeaderVisible = true;
+        } else if (!visible && isHeaderVisible) {
+            header.classList.add('header-hidden');
+            isHeaderVisible = false;
+        }
+    };
+
+    // Throttle function to limit how often a function can run
+    const throttle = (func, limit) => {
+        let inThrottle;
+        return function() {
+            const args = arguments;
+            const context = this;
+            if (!inThrottle) {
+                func.apply(context, args);
+                inThrottle = true;
+                setTimeout(() => inThrottle = false, limit);
+            }
+        }
+    };
+
+    const handleScroll = () => {
+        const currentScrollY = window.scrollY;
+
+        // Always show header if mouse is near top
+        if (mouseIsNearTop) {
+            setHeaderVisibility(true);
+            lastScrollY = currentScrollY; // Update lastScrollY even if mouse is near top
+            return;
+        }
+
+        // Only react to scroll if past the header initial height
+        if (currentScrollY > headerHeight) {
+            if (currentScrollY > lastScrollY) {
+                // Scrolling down
+                setHeaderVisibility(false);
+            } else {
+                // Scrolling up
+                setHeaderVisibility(true);
+            }
+        } else {
+            // At or near the very top of the page, always show header
+            setHeaderVisibility(true);
+        }
+
+        lastScrollY = currentScrollY;
+    };
+
+    window.addEventListener('scroll', throttle(handleScroll, 100)); // Throttle scroll to every 100ms
+
+    window.addEventListener('mousemove', (e) => {
+        if (e.clientY < mouseTriggerHeight) {
+            if (!mouseIsNearTop) {
+                mouseIsNearTop = true;
+                setHeaderVisibility(true);
+            }
+            clearTimeout(mouseLeaveTimeout); // Clear any pending hide
+        } else {
+            if (mouseIsNearTop) {
+                mouseIsNearTop = false;
+                mouseLeaveTimeout = setTimeout(() => {
+                    // Only hide if currently scrolling down and not near the very top
+                    if (window.scrollY > headerHeight && window.scrollY > lastScrollY) {
+                        setHeaderVisibility(false);
+                    }
+                }, 500); // Wait 0.5s before potentially hiding
+            }
+            }
+        });
+
+        // Initial check on load
+        if (window.scrollY > headerHeight) {
+            setHeaderVisibility(false); // Hide if not at the very top on load
+        }
+    });
 </script>
 <!-- FOOTER -->
 @include('layouts.footer')
