@@ -74,7 +74,6 @@
       <span class="text-orange-400">par son numéro</span>
     </h1>
 
-    <!-- Badge dynamique -->
     <div id="country-badge"
          class="inline-flex items-center gap-2 bg-gradient-to-r from-amber-400 to-amber-300 text-slate-900 px-4 py-2 rounded-full font-semibold shadow">
       <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a8 8 0 100 16 8 8 0 000-16zm0 14a6 6 0 110-12 6 6 0 010 12zm-1-5h2v2H9v-2zm0-4h2v3H9V7z"/></svg>
@@ -83,27 +82,32 @@
 
     <p class="text-lg text-slate-900">Ready to find out the location of the phone number?</p>
 
-    <!-- Sélecteur pays + input -->
-    <div class="flex flex-col sm:flex-row gap-3 w-full max-w-sm mx-auto sm:max-w-none sm:mx-0">
-      <input id="phone" type="tel"
+    <!-- FORM vers searchNumber -->
+    <form action="{{ route('searchNumber') }}" method="GET"
+          class="flex flex-col sm:flex-row gap-3 w-full max-w-sm mx-auto sm:max-w-none sm:mx-0">
+      <input id="phone" name="phone" type="tel"
              class="border rounded-full px-14 py-5 text-xl w-full sm:w-auto outline-none focus:ring-2 focus:ring-orange-400">
-      <button class="bg-orange-500 hover:bg-orange-600 text-white py-5 px-14 rounded-full text-xl font-black shadow-lg shadow-orange-200 uppercase tracking-widest transition-all hover:scale-105 w-full sm:w-auto">
-        DÉTECTER
-      </button>    </div>
 
-     <!-- Image AOP -->
+      <button type="submit"
+              class="bg-orange-500 hover:bg-orange-600 text-white py-5 px-14 rounded-full text-xl font-black shadow-lg shadow-orange-200 uppercase tracking-widest transition-all hover:scale-105 w-full sm:w-auto">
+        DÉTECTER
+      </button>
+    </form>
+
     <div class="flex gap-4">
-        <img src="{{ asset('assets/images/logo-AOP.png') }}" alt="100 % légal" class="h-24">
+      <img src="{{ asset('assets/images/logo-AOP.png') }}" alt="100 % légal" class="h-24">
     </div>
 
-    <p class="text-xs text-slate-400">Confidential & Secure – it doesn’t matter where you are or what device you’re using.</p>
+    <p class="text-xs text-slate-400">
+      Confidential & Secure – it doesn’t matter where you are or what device you’re using.
+    </p>
   </div>
 
-  <!-- Colonne Lottie -->
   <div class="relative hidden md:block">
     <div id="lottie-animation" class="w-full h-[300px] md:h-[420px]"></div>
   </div>
 </section>
+
 
 <!-- Scripts -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@19/build/css/intlTelInput.css">
@@ -224,17 +228,20 @@
         Géolocalisez un numéro, identifiez son propriétaire et obtenez des informations utiles instantanément.
       </p>
       <div class="hidden lg:block pt-4">
-        <button class="bg-orange-500 hover:bg-orange-600 text-white font-black py-5 px-14 rounded-full text-xl transition-all hover:scale-105 shadow-lg shadow-orange-200 uppercase tracking-widest">
+        <a href="{{ route('addNumber') }}"
+          class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-black py-5 px-14 rounded-full text-xl transition-all hover:scale-105 shadow-lg shadow-orange-200 uppercase tracking-widest">
           Essayer
-        </button>
+        </a>
       </div>
     </div>
-    
+
     <div class="order-4 lg:hidden text-center">
-      <button class="bg-orange-500 hover:bg-orange-600 text-white font-black py-5 px-14 rounded-full text-xl transition-all hover:scale-105 shadow-lg shadow-orange-200 uppercase tracking-widest">
+      <a href="{{ route('addNumber') }}"
+        class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-black py-5 px-14 rounded-full text-xl transition-all hover:scale-105 shadow-lg shadow-orange-200 uppercase tracking-widest">
         Essayer
-      </button>
+      </a>
     </div>
+
 
   </div>
 </section>
@@ -494,11 +501,10 @@
 </section>
 
 <div class="text-center mt-16 mb-16">
-  <a href="#main-cta-section" class="group relative w-full max-w-sm mx-auto md:w-auto md:max-w-none bg-orange-500 text-white py-6 px-16 rounded-full text-xl font-black shadow-[0_20px_40px_rgba(249,115,22,0.3)] uppercase tracking-[0.15em] transition-all duration-300 hover:scale-105 active:scale-95 overflow-hidden inline-block">
+  <a href="{{ route('addNumber') }}" class="group relative w-full max-w-sm mx-auto md:w-auto md:max-w-none bg-orange-500 text-white py-6 px-16 rounded-full text-xl font-black shadow-[0_20px_40px_rgba(249,115,22,0.3)] uppercase tracking-[0.15em] transition-all duration-300 hover:scale-105 active:scale-95 overflow-hidden inline-block">
     <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]"></span>
     <span class="relative z-10">Localiser maintenant</span>
-  </a>
-</div>
+  </a></div>
 
 <!-- FAQ -->
 <section id="faq-section" class="max-w-4xl mx-auto px-6 pb-32">
@@ -566,10 +572,10 @@
       </div>
 
       <div class="mt-12 md:mt-10 text-center md:text-left order-3 md:order-none">
-        <button class="group relative w-full max-w-sm mx-auto md:w-auto md:max-w-none bg-orange-500 text-white py-6 px-16 rounded-full text-xl font-black shadow-[0_20px_40px_rgba(249,115,22,0.3)] uppercase tracking-[0.15em] transition-all duration-300 hover:scale-105 active:scale-95 overflow-hidden">
+        <a href="{{ route('addNumber') }}" class="group relative w-full max-w-sm mx-auto md:w-auto md:max-w-none bg-orange-500 text-white py-6 px-16 rounded-full text-xl font-black shadow-[0_20px_40px_rgba(249,115,22,0.3)] uppercase tracking-[0.15em] transition-all duration-300 hover:scale-105 active:scale-95 overflow-hidden inline-block">
           <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]"></span>
           <span class="relative z-10">Localiser maintenant</span>
-        </button>
+        </a>
         
         <div class="mt-8 flex flex-wrap justify-center md:justify-start gap-6">
           <div class="flex items-center gap-2 text-sm text-gray-500 font-bold">
