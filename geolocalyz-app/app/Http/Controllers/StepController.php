@@ -42,4 +42,10 @@ class StepController extends Controller
         // Logic for accessing the dashboard can be added here
         return view('dashboardUser');
     }
+
+    public function accessLocalisation()
+    {
+        // Logic for accessing the localisation can be added here
+        return view('localisationUser');
+    }
 }

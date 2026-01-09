@@ -18,3 +18,5 @@ Route::get('/payment-geolocalyz', [StepController::class, 'PreparePayment'])->na
 Route::get('/login-user', [StepController::class, 'loginUser'])->name('loginUser');
 
 Route::get('/access-Dashboard', [StepController::class, 'accessDashboard'])->name('accessDashboard');
+
+Route::get('/access-Localisation', [StepController::class, 'accessLocalisation'])->name('accessLocalisation');

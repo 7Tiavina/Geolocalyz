@@ -34,7 +34,7 @@
         </a>
         <nav class="flex items-center gap-6">
             <a href="#" class="text-[10px] font-black text-gray-500 hover:text-brand transition-colors uppercase tracking-widest">Aide</a>
-            <a href="#" class="text-[10px] font-black text-gray-500 hover:text-brand transition-colors uppercase tracking-widest">Déconnexion</a>
+            <a href="{{ route('loginUser') }}" class="text-[10px] font-black text-gray-500 hover:text-brand transition-colors uppercase tracking-widest">Déconnexion</a>
         </nav>
       </div>
     </header>
@@ -89,13 +89,13 @@
                         <div class="space-y-4">
                             <div class="flex items-center justify-between bg-gray-50 p-4 rounded-xl border border-gray-100">
                                 <p class="text-sm font-semibold text-gray-700">+230 5519 3628</p>
-                                <a href="#" class="bg-brand/10 text-brand text-[10px] font-bold px-4 py-1 rounded-full hover:bg-brand hover:text-white transition-all uppercase">
+                                <a href="{{ route('accessLocalisation') }}" class="bg-brand/10 text-brand text-[10px] font-bold px-4 py-1 rounded-full hover:bg-brand hover:text-white transition-all uppercase">
                                     Voir la carte
                                 </a>
                             </div>
                             <div class="flex items-center justify-between bg-gray-50 p-4 rounded-xl border border-gray-100">
                                 <p class="text-sm font-semibold text-gray-700">+33 6 12 34 56 78</p>
-                                <a href="#" class="bg-brand/10 text-brand text-[10px] font-bold px-4 py-1 rounded-full hover:bg-brand hover:text-white transition-all uppercase">
+                                <a href="{{ route('accessLocalisation') }}" class="bg-brand/10 text-brand text-[10px] font-bold px-4 py-1 rounded-full hover:bg-brand hover:text-white transition-all uppercase">
                                     Voir la carte
                                 </a>
                             </div>
