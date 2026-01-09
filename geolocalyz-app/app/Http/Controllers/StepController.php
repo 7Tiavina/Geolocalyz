@@ -13,4 +13,11 @@ class StepController extends Controller
     {
         return view('addNumber');
     }
+
+    public function searchNumber(Request $request)
+    {
+        $phone = $request->phone;
+        return view('searchNumber', compact('phone'));
+    }
+
 }

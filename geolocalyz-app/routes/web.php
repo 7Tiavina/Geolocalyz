@@ -8,3 +8,5 @@ Route::get('/', function () {
 });
 
 Route::get('/add-number', [StepController::class, 'index'])->name('addNumber');
+
+Route::get('/search-number', [StepController::class, 'searchNumber'])->name('searchNumber');

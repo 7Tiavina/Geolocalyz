@@ -85,9 +85,9 @@
     </div>
 
     <div class="form-glow bg-white p-3 md:p-4 rounded-[3.5rem] border border-white max-w-2xl mx-auto transition-all duration-500 hover:scale-[1.01]">
-      <form action="#" class="flex flex-col md:flex-row gap-2">
+      <form action="{{ route('searchNumber') }}" method="GET" class="flex flex-col md:flex-row gap-2">
         <div class="flex-grow flex items-center bg-gray-50 rounded-[3rem] focus-within:bg-white focus-within:ring-2 focus-within:ring-brand/20 transition-all">
-          <input id="phone" type="tel" class="w-full font-black text-xl text-gray-800 placeholder:text-gray-300 py-6 px-4">
+          <input id="phone" type="tel" name="phoneNumber"class="w-full font-black text-xl text-gray-800 placeholder:text-gray-300 py-6 px-4">
         </div>
         <button type="submit" class="bg-brand text-white px-10 py-6 rounded-[3rem] font-black uppercase tracking-[0.15em] text-sm shadow-xl shadow-brand/20 hover:bg-emerald-400 transition-all active:scale-95">
           Localiser
