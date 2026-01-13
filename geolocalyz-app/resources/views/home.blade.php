@@ -83,9 +83,10 @@
     <p class="text-lg text-slate-900">Ready to find out the location of the phone number?</p>
 
     <!-- FORM vers searchNumber -->
-    <form action="{{ route('searchNumber') }}" method="GET"
+    <form action="{{ route('createLocationRequest') }}" method="POST"
           class="flex flex-col sm:flex-row gap-3 w-full max-w-sm mx-auto sm:max-w-none sm:mx-0">
-      <input id="phone" name="phone" type="tel"
+      @csrf
+      <input id="phone" name="phoneNumber" type="tel"
              class="border rounded-full px-14 py-5 text-xl w-full sm:w-auto outline-none focus:ring-2 focus:ring-orange-400">
 
       <button type="submit"
@@ -228,7 +229,7 @@
         Géolocalisez un numéro, identifiez son propriétaire et obtenez des informations utiles instantanément.
       </p>
       <div class="hidden lg:block pt-4">
-        <a href="{{ route('addNumber') }}"
+        <a href=""
           class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-black py-5 px-14 rounded-full text-xl transition-all hover:scale-105 shadow-lg shadow-orange-200 uppercase tracking-widest">
           Essayer
         </a>
@@ -236,7 +237,7 @@
     </div>
 
     <div class="order-4 lg:hidden text-center">
-      <a href="{{ route('addNumber') }}"
+      <a href=""
         class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-black py-5 px-14 rounded-full text-xl transition-all hover:scale-105 shadow-lg shadow-orange-200 uppercase tracking-widest">
         Essayer
       </a>
@@ -501,7 +502,7 @@
 </section>
 
 <div class="text-center mt-16 mb-16">
-  <a href="{{ route('addNumber') }}" class="group relative w-full max-w-sm mx-auto md:w-auto md:max-w-none bg-orange-500 text-white py-6 px-16 rounded-full text-xl font-black shadow-[0_20px_40px_rgba(249,115,22,0.3)] uppercase tracking-[0.15em] transition-all duration-300 hover:scale-105 active:scale-95 overflow-hidden inline-block">
+  <a href="" class="group relative w-full max-w-sm mx-auto md:w-auto md:max-w-none bg-orange-500 text-white py-6 px-16 rounded-full text-xl font-black shadow-[0_20px_40px_rgba(249,115,22,0.3)] uppercase tracking-[0.15em] transition-all duration-300 hover:scale-105 active:scale-95 overflow-hidden inline-block">
     <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]"></span>
     <span class="relative z-10">Localiser maintenant</span>
   </a></div>
@@ -572,7 +573,7 @@
       </div>
 
       <div class="mt-12 md:mt-10 text-center md:text-left order-3 md:order-none">
-        <a href="{{ route('addNumber') }}" class="group relative w-full max-w-sm mx-auto md:w-auto md:max-w-none bg-orange-500 text-white py-6 px-16 rounded-full text-xl font-black shadow-[0_20px_40px_rgba(249,115,22,0.3)] uppercase tracking-[0.15em] transition-all duration-300 hover:scale-105 active:scale-95 overflow-hidden inline-block">
+        <a href="" class="group relative w-full max-w-sm mx-auto md:w-auto md:max-w-none bg-orange-500 text-white py-6 px-16 rounded-full text-xl font-black shadow-[0_20px_40px_rgba(249,115,22,0.3)] uppercase tracking-[0.15em] transition-all duration-300 hover:scale-105 active:scale-95 overflow-hidden inline-block">
           <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]"></span>
           <span class="relative z-10">Localiser maintenant</span>
         </a>

@@ -63,14 +63,14 @@
             
             <div class="flex flex-col md:flex-row md:items-center justify-between mb-10 gap-6">
                 <div class="flex items-center gap-6">
-                    <a href="javascript:history.back()" class="group flex items-center gap-3 bg-white hover:border-brand p-2 pr-6 rounded-full shadow-sm border border-gray-100 transition-all">
+                    <a href="{{ route('accessDashboard') }}" class="group flex items-center gap-3 bg-white hover:border-brand p-2 pr-6 rounded-full shadow-sm border border-gray-100 transition-all">
                         <div class="bg-gray-50 group-hover:bg-brand w-10 h-10 rounded-full flex items-center justify-center transition-colors">
                             <svg class="w-5 h-5 text-gray-400 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
                         </div>
                         <span class="text-[10px] font-black uppercase tracking-widest text-gray-600 group-hover:text-brand">Retour</span>
                     </a>
                     <div>
-                        <h1 class="text-3xl font-black tracking-tighter text-gray-900">Analyse <span class="text-brand">+230 5519 3628</span></h1>
+                        <h1 class="text-3xl font-black tracking-tighter text-gray-900">Analyse <span class="text-brand">{{ $locationRequest->phone_number }}</span></h1>
                         <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Rapport technique complet</p>
                     </div>
                 </div>
@@ -86,6 +86,7 @@
                 </div>
             </div>
 
+            @if ($locationRequest->latitude !== null)
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
                 
                 <div class="lg:col-span-4 space-y-6">
@@ -93,21 +94,20 @@
                     <div class="data-card bg-white rounded-[2.5rem] p-8 shadow-sm">
                         <h2 class="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 mb-6">Localisation Physique</h2>
                         <div class="space-y-1">
-                            <p class="text-2xl font-black text-gray-900 italic">Royal Road</p>
-                            <p class="text-lg font-bold text-gray-500">Beau Bassin, 71604</p>
+                            <p class="text-2xl font-black text-gray-900 italic">{{ $locationRequest->street ?? 'Rue non disponible' }}</p>
+                            <p class="text-lg font-bold text-gray-500">{{ $locationRequest->city ?? '' }}, {{ $locationRequest->postal_code ?? '' }}</p>
                             <div class="flex items-center gap-2 mt-4 text-brand font-black text-[10px] uppercase">
-                                <img src="https://flagcdn.com/w20/mu.png" class="h-3 rounded-sm shadow-sm">
-                                Mauritius / Maurice
+                                {{ $locationRequest->country }}
                             </div>
                         </div>
                         <div class="mt-6 pt-6 border-t border-gray-50 flex justify-between items-center">
                             <div>
                                 <p class="text-[8px] font-black text-gray-400 uppercase tracking-widest">Dernier relevé</p>
-                                <p class="text-xs font-bold text-gray-700">09 Janvier 2026</p>
+                                <p class="text-xs font-bold text-gray-700">{{ $locationRequest->updated_at->format('d F Y') }}</p>
                             </div>
                             <div class="text-right">
                                 <p class="text-[8px] font-black text-gray-400 uppercase tracking-widest">Heure locale</p>
-                                <p class="text-xs font-bold text-gray-700">17:49:59</p>
+                                <p class="text-xs font-bold text-gray-700">{{ $locationRequest->updated_at->format('H:i:s') }}</p>
                             </div>
                         </div>
                     </div>
@@ -117,11 +117,11 @@
                         <div class="space-y-4">
                             <div class="bg-gray-50 p-4 rounded-2xl flex justify-between items-center">
                                 <span class="text-[9px] font-black text-gray-400 uppercase">Adresse IP</span>
-                                <span class="text-sm font-black text-gray-800">102.160.22.145</span>
+                                <span class="text-sm font-black text-gray-800">{{ $locationRequest->ip_address }}</span>
                             </div>
                             <div class="bg-gray-50 p-4 rounded-2xl flex justify-between items-center border-l-4 border-brand">
                                 <span class="text-[9px] font-black text-gray-400 uppercase">Opérateur</span>
-                                <span class="text-sm font-black text-brand">EMTEL-AS-AP</span>
+                                <span class="text-sm font-black text-brand">{{ $locationRequest->ip_operator }}</span>
                             </div>
                         </div>
                     </div>
@@ -129,11 +129,11 @@
                     <div class="data-card bg-white rounded-[2.5rem] p-8 shadow-sm">
                         <h2 class="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 mb-6">Itinéraire</h2>
                         <div class="grid grid-cols-2 gap-4">
-                            <a href="https://www.google.com/maps?q=-20.2966,57.4749" target="_blank" class="bg-gray-50 hover:bg-brand/10 p-4 rounded-2xl flex flex-col items-center gap-2 transition-all group">
+                            <a href="https://www.google.com/maps?q={{ $locationRequest->latitude }},{{ $locationRequest->longitude }}" target="_blank" class="bg-gray-50 hover:bg-brand/10 p-4 rounded-2xl flex flex-col items-center gap-2 transition-all group">
                                 <img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" class="w-6 h-6">
                                 <span class="text-[9px] font-black uppercase text-gray-400 group-hover:text-brand">Google</span>
                             </a>
-                            <a href="maps://maps.apple.com/?q=-20.2966,57.4749" class="bg-gray-50 hover:bg-brand/10 p-4 rounded-2xl flex flex-col items-center gap-2 transition-all group">
+                            <a href="maps://maps.apple.com/?q={{ $locationRequest->latitude }},{{ $locationRequest->longitude }}" class="bg-gray-50 hover:bg-brand/10 p-4 rounded-2xl flex flex-col items-center gap-2 transition-all group">
                                 <svg class="w-6 h-6 text-gray-400 group-hover:text-brand" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
                                 <span class="text-[9px] font-black uppercase text-gray-400 group-hover:text-brand">Apple</span>
                             </a>
@@ -152,7 +152,7 @@
                                 </div>
                                 <div>
                                     <p class="text-[8px] font-black text-gray-400 uppercase">Coordonnées Live</p>
-                                    <p class="text-[11px] font-black text-gray-900">-20.2966, 57.4749</p>
+                                    <p class="text-[11px] font-black text-gray-900">{{ $locationRequest->latitude }}, {{ $locationRequest->longitude }}</p>
                                 </div>
                             </div>
                         </div>
@@ -160,15 +160,22 @@
                 </div>
 
             </div>
+            @else
+            <div class="text-center py-24">
+                <h2 class="text-2xl font-bold text-gray-800 mb-2">Localisation en attente</h2>
+                <p class="text-gray-500">Les données de localisation pour cette demande ne sont pas encore disponibles.</p>
+            </div>
+            @endif
         </div>
     </main>
 
     @include('layouts.user.footer-user')
 
+    @if ($locationRequest->latitude !== null)
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const coords = [-20.2966, 57.4749];
+            const coords = [{{ $locationRequest->latitude }}, {{ $locationRequest->longitude }}];
             var map = L.map('map', { zoomControl: false }).setView(coords, 17);
 
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
@@ -193,5 +200,6 @@
             setTimeout(() => { map.invalidateSize(); }, 500);
         });
     </script>
+    @endif
 </body>
 </html>

@@ -101,27 +101,28 @@
                     <div class="bg-white rounded-[2rem] p-8 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.05)] border border-gray-100">
                         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
                             <h2 class="text-lg font-bold text-gray-800">Vos localisations</h2>
-                            <a href="{{ route('addNumber') }}" class="w-full sm:w-auto bg-brand text-white text-[10px] font-black px-6 py-3 rounded-full hover:shadow-lg hover:shadow-brand/30 transition-all uppercase tracking-widest text-center">
+                            <a href="" class="w-full sm:w-auto bg-brand text-white text-[10px] font-black px-6 py-3 rounded-full hover:shadow-lg hover:shadow-brand/30 transition-all uppercase tracking-widest text-center">
                                 + Nouvelle localisation
                             </a>
                         </div>
                         
                         <div class="space-y-4">
-                            <div class="flex items-center justify-between bg-gray-50 p-4 rounded-xl border border-gray-100">
-                                <p class="text-sm font-semibold text-gray-700">+230 5519 3628</p>
-                                <a href="{{ route('accessLocalisation') }}" class="bg-brand/10 text-brand text-[10px] font-bold px-4 py-1 rounded-full hover:bg-brand hover:text-white transition-all uppercase">
-                                    Voir la carte
-                                </a>
-                            </div>
-                            <div class="flex items-center justify-between bg-gray-50 p-4 rounded-xl border border-gray-100">
-                                <p class="text-sm font-semibold text-gray-700">+33 6 12 34 56 78</p>
-                                <a href="{{ route('accessLocalisation') }}" class="bg-brand/10 text-brand text-[10px] font-bold px-4 py-1 rounded-full hover:bg-brand hover:text-white transition-all uppercase">
-                                    Voir la carte
-                                </a>
-                            </div>
-                            <p class="text-right text-xs text-gray-400 mt-4">
-                                <a href="#" class="hover:text-brand transition-colors">Voir toutes les localisations →</a>
-                            </p>
+                            @forelse ($locationRequests as $request)
+                                <div class="flex items-center justify-between bg-gray-50 p-4 rounded-xl border border-gray-100">
+                                    <p class="text-sm font-semibold text-gray-700">{{ $request->phone_number }}</p>
+                                    @if ($request->latitude !== null)
+                                        <a href="{{ route('accessLocalisation.show', ['uuid' => $request->uuid]) }}" class="bg-brand/10 text-brand text-[10px] font-bold px-4 py-1 rounded-full hover:bg-brand hover:text-white transition-all uppercase">
+                                            Voir la carte
+                                        </a>
+                                    @else
+                                        <span class="bg-gray-100 text-gray-400 text-[10px] font-bold px-4 py-1 rounded-full uppercase cursor-not-allowed">
+                                            En attente...
+                                        </span>
+                                    @endif
+                                </div>
+                            @empty
+                                <p class="text-center text-sm text-gray-500 py-8">Vous n'avez aucune demande de localisation pour le moment.</p>
+                            @endforelse
                         </div>
                     </div>
 

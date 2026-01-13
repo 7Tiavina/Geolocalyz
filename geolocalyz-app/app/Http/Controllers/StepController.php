@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\LocationRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class StepController extends Controller
 {
@@ -11,13 +13,28 @@ class StepController extends Controller
      */
     public function index()
     {
-        return view('addNumber');
+        return "Debug: addNumber route reached";
     }
 
-    public function searchNumber(Request $request)
+    public function createLocationRequest(Request $request)
     {
-        $phone = $request->phone;
-        return view('searchNumber', compact('phone'));
+        $request->validate([
+            'phoneNumber' => 'required',
+        ]);
+
+        $locationRequest = new LocationRequest();
+        $locationRequest->phone_number = $request->phoneNumber;
+        $locationRequest->uuid = Str::uuid();
+        $locationRequest->save();
+
+        return redirect()->route('searchNumber.show', ['uuid' => $locationRequest->uuid]);
+    }
+
+    public function searchNumber(string $uuid)
+    {
+        $locationRequest = LocationRequest::where('uuid', $uuid)->firstOrFail();
+        $phone = $locationRequest->phone_number;
+        return view('searchNumber', compact('phone', 'uuid'));
     }
 
     public function addEmail()
@@ -39,13 +56,13 @@ class StepController extends Controller
     
     public function accessDashboard()
     {
-        // Logic for accessing the dashboard can be added here
-        return view('dashboardUser');
+        $locationRequests = LocationRequest::latest()->get();
+        return view('dashboardUser', compact('locationRequests'));
     }
 
-    public function accessLocalisation()
+    public function accessLocalisation(string $uuid)
     {
-        // Logic for accessing the localisation can be added here
-        return view('localisationUser');
+        $locationRequest = LocationRequest::where('uuid', $uuid)->firstOrFail();
+        return view('localisationUser', compact('locationRequest'));
     }
 }
