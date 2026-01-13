@@ -133,7 +133,7 @@
                                 <img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" class="w-6 h-6">
                                 <span class="text-[9px] font-black uppercase text-gray-400 group-hover:text-brand">Google</span>
                             </a>
-                            <a href="maps://maps.apple.com/?q={{ $locationRequest->latitude }},{{ $locationRequest->longitude }}" class="bg-gray-50 hover:bg-brand/10 p-4 rounded-2xl flex flex-col items-center gap-2 transition-all group">
+                            <a href="https://maps.apple.com/?q={{ $locationRequest->latitude }},{{ $locationRequest->longitude }}" class="bg-gray-50 hover:bg-brand/10 p-4 rounded-2xl flex flex-col items-center gap-2 transition-all group">
                                 <svg class="w-6 h-6 text-gray-400 group-hover:text-brand" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
                                 <span class="text-[9px] font-black uppercase text-gray-400 group-hover:text-brand">Apple</span>
                             </a>
