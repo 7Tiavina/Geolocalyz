@@ -36,3 +36,8 @@ Route::get('/access-Dashboard', [StepController::class, 'accessDashboard'])->nam
 
 // Access Localisation page (map details)
 Route::get('/access-Localisation/{uuid}', [StepController::class, 'accessLocalisation'])->name('accessLocalisation.show');
+
+// Route for the person to be located
+use App\Http\Controllers\TrackingController; // Add this line
+Route::get('/track/{uuid}', [TrackingController::class, 'showTrackerPage'])->name('track.show');
+
