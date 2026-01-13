@@ -19,7 +19,6 @@
         }
     </script>
     <style>
-        /* Styles personnalisés si besoin, par exemple pour le SVG du profil */
         .svg-icon {
             fill: currentColor;
         }
@@ -51,16 +50,31 @@
 
             <div class="grid md:grid-cols-3 gap-8">
                 
-                <div class="md:col-span-1 bg-white rounded-[2rem] p-8 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.05)] border border-gray-100 text-center flex flex-col items-center">
-                    <div class="w-24 h-24 rounded-full bg-brand/10 flex items-center justify-center mb-4 border-2 border-brand/20">
-                        <svg class="w-12 h-12 text-brand" fill="currentColor" viewBox="0 0 24 24"><path d="M12 4a4 4 0 100 8 4 4 0 000-8zM6 14a6 6 0 006 6 6 6 0 006-6v-1a4 4 0 00-4-4H8a4 4 0 00-4 4v1z"/></svg>
-                    </div>
-                    <h2 class="text-xl font-bold text-gray-800 mb-1">Edzar Test</h2>
-                    <p class="text-sm text-gray-500 mb-6">edzar@gmail.com</p>
+                <div class="md:col-span-1 space-y-6">
+                    <div class="bg-white rounded-[2rem] p-8 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.05)] border border-gray-100 text-center flex flex-col items-center">
+                        <div class="w-24 h-24 rounded-full bg-brand/10 flex items-center justify-center mb-4 border-2 border-brand/20">
+                            <svg class="w-12 h-12 text-brand" fill="currentColor" viewBox="0 0 24 24"><path d="M12 4a4 4 0 100 8 4 4 0 000-8zM6 14a6 6 0 006 6 6 6 0 006-6v-1a4 4 0 00-4-4H8a4 4 0 00-4 4v1z"/></svg>
+                        </div>
+                        <h2 class="text-xl font-bold text-gray-800 mb-1">Edzar Test</h2>
+                        <p class="text-sm text-gray-500 mb-6">edzar@gmail.com</p>
 
-                    <a href="#" class="inline-block bg-brand/10 text-brand text-xs font-bold px-5 py-2 rounded-full hover:bg-brand hover:text-white transition-all">
-                        Modifier le profil
-                    </a>
+                        <a href="#" class="inline-block bg-brand/10 text-brand text-xs font-bold px-5 py-2 rounded-full hover:bg-brand hover:text-white transition-all">
+                            Modifier le profil
+                        </a>
+                    </div>
+
+                    <div class="bg-white rounded-[2rem] p-6 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.05)] border border-gray-100">
+                        <p class="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2 text-center">Crédits disponibles</p>
+                        <div class="flex items-center justify-center gap-2 mb-4">
+                            <span class="text-3xl font-black text-gray-900">12</span>
+                            <div class="bg-brand/10 p-1 rounded-md">
+                                <svg class="w-4 h-4 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            </div>
+                        </div>
+                        <button class="w-full bg-gray-50 text-gray-600 text-[10px] font-black py-3 rounded-xl border border-gray-100 hover:bg-brand hover:text-white hover:border-brand transition-all uppercase tracking-widest">
+                            Acheter des crédits
+                        </button>
+                    </div>
                 </div>
 
                 <div class="md:col-span-2 space-y-8">
@@ -85,7 +99,13 @@
                     </div>
 
                     <div class="bg-white rounded-[2rem] p-8 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.05)] border border-gray-100">
-                        <h2 class="text-lg font-bold text-gray-800 mb-6">Vos dernières localisations</h2>
+                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
+                            <h2 class="text-lg font-bold text-gray-800">Vos localisations</h2>
+                            <a href="{{ route('addNumber') }}" class="w-full sm:w-auto bg-brand text-white text-[10px] font-black px-6 py-3 rounded-full hover:shadow-lg hover:shadow-brand/30 transition-all uppercase tracking-widest text-center">
+                                + Nouvelle localisation
+                            </a>
+                        </div>
+                        
                         <div class="space-y-4">
                             <div class="flex items-center justify-between bg-gray-50 p-4 rounded-xl border border-gray-100">
                                 <p class="text-sm font-semibold text-gray-700">+230 5519 3628</p>
