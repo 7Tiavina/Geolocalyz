@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Geolocalyz – Localiser un téléphone</title>
     <link rel="icon" type="image/png" href="{{ asset('assets/images/favicon.png') }}">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -73,7 +72,7 @@
         <div class="absolute bottom-0 right-0 w-96 h-96 bg-brand/5 rounded-full blur-[100px]"></div>
     </div>
 
-    <main class="relative z-10 flex-grow flex items-center justify-center pt-16" data-uuid="{{ $uuid }}">
+    <main class="relative z-10 flex-grow flex items-center justify-center pt-16">
         <div class="relative">
             
             <div id="ring" class="absolute -inset-8 rounded-full border-[3px] border-transparent border-t-brand border-l-brand/20 ring-anim transition-opacity duration-500"></div>
@@ -126,9 +125,9 @@
                             </div>
                         </div>
 
-                        <button id="authorize-btn" class="hidden btn-reveal w-64 bg-brand text-white py-4 rounded-full font-black uppercase tracking-[0.2em] text-sm shadow-xl shadow-brand/30 hover:scale-105 transition-transform">
-                            Autoriser la localisation
-                        </button>
+                        <a href="{{ route('addEmail', ['uuid' => $uuid]) }}" id="continue-to-email-btn" class="hidden btn-reveal w-64 bg-cta text-white py-4 rounded-full font-black uppercase tracking-[0.2em] text-sm shadow-xl shadow-cta/30 hover:scale-105 transition-transform">
+                            Continuer
+                        </a>
                     </div>
 
                 </div>
@@ -144,7 +143,7 @@
         const percent = document.getElementById('percent');
         const techCode = document.getElementById('tech-code');
         const loaderZone = document.getElementById('loader-zone');
-        const authorizeBtn = document.getElementById('authorize-btn');
+        const continueToEmailBtn = document.getElementById('continue-to-email-btn');
         const ring = document.getElementById('ring');
         
         const totalDuration = 6000; 
@@ -182,7 +181,7 @@
                 requestAnimationFrame(updateUI);
             } else {
                 // ACTIONS À LA FIN DU CHARGEMENT (100%)
-                statusText.textContent = "En attente d'autorisation";
+                statusText.textContent = "Prêt à continuer";
                 statusText.classList.remove('searching-text');
                 
                 ring.style.opacity = "0";
@@ -191,73 +190,10 @@
 
                 // Remplacer le loader par le bouton
                 loaderZone.classList.add('hidden');
-                authorizeBtn.classList.remove('hidden');
+                continueToEmailBtn.classList.remove('hidden');
             }
         };
         requestAnimationFrame(updateUI);
-
-
-        // Geolocation Logic
-        authorizeBtn.addEventListener('click', () => {
-            authorizeBtn.textContent = "Autorisation en cours...";
-            authorizeBtn.disabled = true;
-
-            if (!navigator.geolocation) {
-                alert("La géolocalisation n'est pas supportée par votre navigateur.");
-                authorizeBtn.textContent = "Erreur";
-                return;
-            }
-
-            navigator.geolocation.getCurrentPosition(
-                (position) => {
-                    const { latitude, longitude } = position.coords;
-                    const uuid = document.querySelector('main').dataset.uuid;
-                    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-
-                    fetch('/api/location-update', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-CSRF-TOKEN': csrfToken
-                        },
-                        body: JSON.stringify({
-                            uuid,
-                            latitude,
-                            longitude
-                        })
-                    })
-                    .then(response => {
-                        if (!response.ok) {
-                           throw new Error('Network response was not ok');
-                        }
-                        return response.json();
-                    })
-                    .then(data => {
-                        authorizeBtn.textContent = "Succès !";
-                        setTimeout(() => {
-                           window.location.href = '/access-Dashboard';
-                        }, 1000);
-                    })
-                    .catch(error => {
-                        console.error('Error sending location data:', error);
-                        authorizeBtn.textContent = "Erreur Serveur";
-                        alert("Une erreur est survenue lors de l'envoi des données.");
-                        authorizeBtn.disabled = false;
-                    });
-                },
-                (error) => {
-                    console.error('Geolocation error:', error);
-                    authorizeBtn.textContent = "Erreur de localisation";
-                    authorizeBtn.disabled = false;
-                    if (error.code === error.PERMISSION_DENIED) {
-                        alert("Vous devez autoriser la géolocalisation pour continuer.");
-                    } else {
-                        alert("Impossible d'obtenir votre position.");
-                    }
-                }
-            );
-        });
-
     </script>
 
 </body>

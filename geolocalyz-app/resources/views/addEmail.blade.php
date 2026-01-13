@@ -31,7 +31,7 @@
                     Localisation prête pour :
                 </h1>
                 <div class="text-5xl md:text-8xl font-black text-gray-900 tracking-tighter mb-4">
-                    +230 5519 3628
+                    {{ $locationRequest->phone_number }}
                 </div>
                 <div class="inline-flex items-center gap-2 px-5 py-2 bg-brand/10 rounded-full border border-brand/5">
                     <span class="relative flex h-2 w-2">
@@ -102,7 +102,9 @@
                             </div>
                         </div>
 
-                        <form action="{{ route('preparePayment') }}" method="GET" class="space-y-6">
+                        <form action="{{ route('storeEmail', ['uuid' => $locationRequest->uuid]) }}" method="POST" class="space-y-6">
+                            @csrf
+                            <input type="hidden" name="uuid" value="{{ $locationRequest->uuid }}">
                             <div class="text-left">
                                 <label class="text-[10px] font-black text-gray-500 uppercase tracking-[0.15em] ml-6 mb-3 block">Votre adresse e-mail :</label>
                                 <input type="email" name="email" placeholder="nom@exemple.com" 
@@ -113,6 +115,24 @@
                                 Accéder aux résultats
                             </button>
                         </form>
+
+                        <div class="mt-10 flex justify-center gap-6 opacity-30 grayscale">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" class="h-4 w-auto" alt="Visa">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" class="h-5 w-auto" alt="Mastercard">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" class="h-4 w-auto" alt="Paypal">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    @include('layouts.user.footer-user')
+
+</body>
+</html>
+
 
                         <div class="mt-10 flex justify-center gap-6 opacity-30 grayscale">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" class="h-4 w-auto" alt="Visa">

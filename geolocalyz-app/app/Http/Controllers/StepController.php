@@ -13,7 +13,7 @@ class StepController extends Controller
      */
     public function index()
     {
-        return "Debug: addNumber route reached";
+        return view('addNumber');
     }
 
     public function createLocationRequest(Request $request)
@@ -37,15 +37,37 @@ class StepController extends Controller
         return view('searchNumber', compact('phone', 'uuid'));
     }
 
-    public function addEmail()
+    public function addEmail(string $uuid)
     {
-        return view('addEmail');
+        $locationRequest = LocationRequest::where('uuid', $uuid)->firstOrFail();
+        return view('addEmail', compact('locationRequest'));
     }
 
-    public function PreparePayment(Request $request)
+    public function storeEmail(Request $request, string $uuid)
     {
-        $email = $request->email;
-        return view('paymentForm', compact('email'));
+        $request->validate([
+            'email' => 'required|email',
+        ]);
+
+        $locationRequest = LocationRequest::where('uuid', $uuid)->firstOrFail();
+        $locationRequest->email = $request->email;
+        $locationRequest->save();
+
+        return redirect()->route('preparePayment', ['uuid' => $uuid, 'email' => $request->email]);
+    }
+
+    public function PreparePayment(Request $request, string $uuid)
+    {
+        $locationRequest = LocationRequest::where('uuid', $uuid)->firstOrFail();
+        $email = $request->email; // Email should be passed as a query parameter
+        return view('paymentForm', compact('locationRequest', 'email'));
+    }
+
+    public function processPayment(string $uuid)
+    {
+        // For MVP, simply redirect to the dashboard after "payment processing"
+        // In a real app, this is where payment gateway interaction would happen
+        return redirect()->route('accessDashboard');
     }
 
     public function loginUser()
