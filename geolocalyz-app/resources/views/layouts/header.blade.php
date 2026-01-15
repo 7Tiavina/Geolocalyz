@@ -9,10 +9,21 @@
     <nav class="hidden md:flex items-center gap-8">
       <a href="#why-geolocalyz-section" class="text-[10px] font-bold text-gray-500 hover:text-brand transition-colors uppercase tracking-[0.1em]">Pourquoi Geolocalyz</a>
       <a href="#how-it-works-section" class="text-[10px] font-bold text-gray-500 hover:text-brand transition-colors uppercase tracking-[0.1em]">Comment ça marche</a>
+      @guest
       <a href="#faq-section" class="text-[10px] font-bold text-gray-500 hover:text-brand transition-colors uppercase tracking-[0.1em]">FAQ</a>
       <a href="#contact-section" class="text-[10px] font-bold text-gray-500 hover:text-brand transition-colors uppercase tracking-[0.1em]">Contact</a>
+      @endguest
       <div class="h-3 w-[1px] bg-gray-200 mx-1"></div>
+      @guest
       <a href="{{ route('loginUser') }}" class="text-[10px] font-bold text-gray-500 hover:text-brand transition-colors uppercase tracking-[0.1em]">Connexion</a>
+      @endguest
+      @auth
+      <a href="{{ route('accessDashboard') }}" class="text-[10px] font-bold text-gray-500 hover:text-brand transition-colors uppercase tracking-[0.1em]">Tableau de bord</a>
+      <form method="POST" action="{{ route('logout') }}">
+          @csrf
+          <button type="submit" class="text-[10px] font-bold text-gray-500 hover:text-brand transition-colors uppercase tracking-[0.1em]">Déconnexion</button>
+      </form>
+      @endauth
       <a href="{{ route('addNumber') }}" class="bg-brand text-white px-5 py-2.5 rounded-full text-[10px] font-black shadow-lg shadow-brand/20 hover:scale-105 hover:shadow-brand/30 active:scale-95 transition-all uppercase tracking-widest">
         Démarrer
       </a>
@@ -43,10 +54,21 @@
     <div class="flex flex-col gap-6">
       <a href="#why-geolocalyz-section" class="mobile-link text-xs font-bold text-gray-600 uppercase tracking-widest">Pourquoi Geolocalyz</a>
       <a href="#how-it-works-section" class="mobile-link text-xs font-bold text-gray-600 uppercase tracking-widest">Comment ça marche</a>
+      @guest
       <a href="#faq-section" class="mobile-link text-xs font-bold text-gray-600 uppercase tracking-widest">FAQ</a>
       <a href="#contact-section" class="mobile-link text-xs font-bold text-gray-600 uppercase tracking-widest">Contact</a>
+      @endguest
       <hr class="border-gray-50">
+      @guest
       <a href="{{ route('loginUser') }}" class="text-xs font-bold text-gray-600 uppercase tracking-widest">Connexion</a>
+      @endguest
+      @auth
+      <a href="{{ route('accessDashboard') }}" class="text-xs font-bold text-gray-600 uppercase tracking-widest">Tableau de bord</a>
+      <form method="POST" action="{{ route('logout') }}">
+          @csrf
+          <button type="submit" class="text-xs font-bold text-gray-600 uppercase tracking-widest text-left w-full">Déconnexion</button>
+      </form>
+      @endauth
       <a href="{{ route('addNumber') }}" class="bg-brand text-white py-4 rounded-full text-center text-xs font-black shadow-lg shadow-brand/20 uppercase tracking-widest">
         Démarrer
       </a>

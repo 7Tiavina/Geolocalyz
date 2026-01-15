@@ -124,16 +124,6 @@
                                 <span id="tech-code" class="text-[9px] font-medium text-gray-300 font-mono tracking-tighter uppercase">X-702-SIGNAL</span>
                             </div>
                         </div>
-
-                        <div id="tracking-link-zone" class="hidden flex flex-col items-center gap-3 w-full">
-                            <p class="text-[10px] font-black text-gray-400 uppercase tracking-widest">Lien à envoyer à la personne à localiser :</p>
-                            <div class="flex items-center gap-2 w-full max-w-md">
-                                <input type="text" id="tracking-link-input" value="{{ route('track.show', ['uuid' => $uuid]) }}" readonly
-                                       class="flex-grow bg-gray-100 border border-gray-200 rounded-full py-2 px-4 text-xs text-gray-700 truncate">
-                                <button id="copy-link-btn" class="bg-brand text-white text-[9px] font-black px-4 py-2 rounded-full uppercase shadow-sm hover:opacity-90 transition-opacity">Copier</button>
-                            </div>
-                            <p class="text-[9px] font-medium text-gray-300 font-mono tracking-tighter uppercase">Copiez et envoyez ce lien via SMS, WhatsApp, etc.</p>
-                        </div>
                         
                         <a href="{{ route('addEmail', ['uuid' => $uuid]) }}" id="continue-to-email-btn" class="hidden btn-reveal w-64 bg-cta text-white py-4 rounded-full font-black uppercase tracking-[0.2em] text-sm shadow-xl shadow-cta/30 hover:scale-105 transition-transform">
                             Continuer
@@ -153,11 +143,8 @@
         const percent = document.getElementById('percent');
         const techCode = document.getElementById('tech-code');
         const loaderZone = document.getElementById('loader-zone');
-        const trackingLinkZone = document.getElementById('tracking-link-zone');
         const continueToEmailBtn = document.getElementById('continue-to-email-btn');
         const ring = document.getElementById('ring');
-        const copyLinkBtn = document.getElementById('copy-link-btn');
-        const trackingLinkInput = document.getElementById('tracking-link-input');
         
         const totalDuration = 6000; 
         const steps = ["Initialisation...", "Triangulation...", "Accès Satellites...", "Calcul Final..."];
@@ -201,28 +188,12 @@
                 document.getElementById('mainCircle').classList.add("pulse-glow");
                 document.getElementById('mainCircle').style.borderColor = "#33d7bb";
 
-                // Remplacer le loader par le lien de suivi et le bouton Continuer
+                // Remplacer le loader par le bouton Continuer
                 loaderZone.classList.add('hidden');
-                trackingLinkZone.classList.remove('hidden'); // Show the tracking link
                 continueToEmailBtn.classList.remove('hidden');
             }
         };
         requestAnimationFrame(updateUI);
-
-        // Copy to clipboard functionality
-        copyLinkBtn.addEventListener('click', () => {
-            trackingLinkInput.select();
-            trackingLinkInput.setSelectionRange(0, 99999); // For mobile devices
-            navigator.clipboard.writeText(trackingLinkInput.value)
-                .then(() => {
-                    copyLinkBtn.textContent = "Copié !";
-                    setTimeout(() => { copyLinkBtn.textContent = "Copier"; }, 2000);
-                })
-                .catch(err => {
-                    console.error('Failed to copy text: ', err);
-                    alert("Impossible de copier le lien. Veuillez le copier manuellement.");
-                });
-        });
     </script>
 
 </body>
