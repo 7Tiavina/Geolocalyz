@@ -13,7 +13,7 @@
       <a href="#contact-section" class="text-[10px] font-bold text-gray-500 hover:text-brand transition-colors uppercase tracking-[0.1em]">Contact</a>
       <div class="h-3 w-[1px] bg-gray-200 mx-1"></div>
       <a href="{{ route('loginUser') }}" class="text-[10px] font-bold text-gray-500 hover:text-brand transition-colors uppercase tracking-[0.1em]">Connexion</a>
-      <a href="" class="bg-brand text-white px-5 py-2.5 rounded-full text-[10px] font-black shadow-lg shadow-brand/20 hover:scale-105 hover:shadow-brand/30 active:scale-95 transition-all uppercase tracking-widest">
+      <a href="{{ route('addNumber') }}" class="bg-brand text-white px-5 py-2.5 rounded-full text-[10px] font-black shadow-lg shadow-brand/20 hover:scale-105 hover:shadow-brand/30 active:scale-95 transition-all uppercase tracking-widest">
         Démarrer
       </a>
     </nav>
@@ -47,7 +47,7 @@
       <a href="#contact-section" class="mobile-link text-xs font-bold text-gray-600 uppercase tracking-widest">Contact</a>
       <hr class="border-gray-50">
       <a href="{{ route('loginUser') }}" class="text-xs font-bold text-gray-600 uppercase tracking-widest">Connexion</a>
-      <a href="" class="bg-brand text-white py-4 rounded-full text-center text-xs font-black shadow-lg shadow-brand/20 uppercase tracking-widest">
+      <a href="{{ route('addNumber') }}" class="bg-brand text-white py-4 rounded-full text-center text-xs font-black shadow-lg shadow-brand/20 uppercase tracking-widest">
         Démarrer
       </a>
     </div>

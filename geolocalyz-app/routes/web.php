@@ -8,7 +8,7 @@ Route::get('/', function () {
 });
 
 // Original addNumber route - displays the form
-Route::get('/add-number', [StepController::class, 'index'])->name('addNumber');
+Route::get('/add-number', [StepController::class, 'redirectAddNumber'])->name('addNumber');
 
 // Route to create a LocationRequest (POST from addNumber form)
 Route::post('/add-number', [StepController::class, 'createLocationRequest'])->name('createLocationRequest');

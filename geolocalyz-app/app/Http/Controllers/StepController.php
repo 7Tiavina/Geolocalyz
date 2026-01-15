@@ -16,6 +16,10 @@ class StepController extends Controller
         return view('addNumber');
     }
 
+    public function redirectAddNumber()
+    {
+        return view('addNumber');
+    }
     public function createLocationRequest(Request $request)
     {
         $request->validate([
