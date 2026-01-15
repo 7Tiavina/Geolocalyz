@@ -51,8 +51,10 @@
 
         <h2>Your Account Details:</h2>
         <p><strong>Email:</strong> {{ $user->email ?? 'N/A' }}</p>
+        @if ($generatedPassword)
         <p><strong>Your Temporary Password:</strong> {{ $generatedPassword }}</p>
         <p>Please log in and change your password for security reasons.</p>
+        @endif
 
         <h2>Your Localization Service:</h2>
         <p>You can access your localization tracking link here:</p>

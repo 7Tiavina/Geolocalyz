@@ -98,6 +98,7 @@ class StepController extends Controller
         $user = User::where('email', $email)->first();
 
         $generatedPassword = null;
+        $localizationLink = route('track.show', ['uuid' => $uuid]);
 
         if (!$user) {
             // User does not exist, create a new one
@@ -111,15 +112,13 @@ class StepController extends Controller
             // Flash the generated password to the session for the modal
             $request->session()->flash('generatedPassword', $generatedPassword);
             
-            // Generate localization link
-            $localizationLink = route('track.show', ['uuid' => $uuid]);
-
-            // Send welcome email with the password
-            Mail::to($user->email)->send(new WelcomeAndInvoiceMail($user, $generatedPassword, $localizationLink));
         }
 
         // Authenticate the user (either existing or newly created)
         Auth::login($user);
+
+        // Send welcome and invoice email (always, but password only if generated)
+        Mail::to($user->email)->send(new WelcomeAndInvoiceMail($user, $generatedPassword, $localizationLink));
 
         // For MVP, simply redirect to the dashboard after "payment processing"
         return redirect()->route('accessDashboard');
