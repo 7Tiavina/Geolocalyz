@@ -6,6 +6,7 @@
     <title>Mon Espace Client - Geolocalyz</title>
     <link rel="icon" type="image/png" href="{{ asset('assets/images/favicon.png') }}">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -42,6 +43,23 @@
     </header>
 
     <main class="flex-grow flex flex-col items-center py-12 px-4">
+
+        @if (session('generatedPassword'))
+        <div x-data="{ open: true }" x-show="open" class="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50 p-4" style="display: none;">
+            <div @click.away="open = false" class="bg-white rounded-[2rem] shadow-xl p-8 md:p-12 text-center max-w-md w-full">
+                <h2 class="text-2xl font-black text-brand mb-4">Bienvenue !</h2>
+                <p class="text-gray-600 mb-6">Votre compte a été créé avec succès. Un e-mail contenant votre mot de passe temporaire vous a été envoyé. Veuillez le conserver en lieu sûr.</p>
+                <p class="text-gray-800 mb-2 font-semibold">Votre mot de passe temporaire :</p>
+                <div class="bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg p-4 mb-8">
+                    <p class="text-2xl font-mono font-bold tracking-widest text-gray-900">{{ session('generatedPassword') }}</p>
+                </div>
+                <button @click="open = false" class="bg-brand text-white font-bold px-8 py-3 rounded-full hover:shadow-lg hover:shadow-brand/30 transition-all w-full">
+                    J'ai compris, fermer
+                </button>
+            </div>
+        </div>
+        @endif
+
         <div class="max-w-4xl w-full">
             
             <div class="mb-12 text-center">

@@ -90,31 +90,38 @@ class StepController extends Controller
         return view('dashboardUser', compact('locationRequests'));
     }
 
-    public function processPayment(string $uuid)
+    public function processPayment(Request $request, string $uuid)
     {
         $locationRequest = LocationRequest::where('uuid', $uuid)->firstOrFail();
         $email = $locationRequest->email;
 
-        // Generate a random password
-        $generatedPassword = Str::random(10);
+        $user = User::where('email', $email)->first();
 
-        // Find or create the user
-        $user = User::firstOrCreate(
-            ['email' => $email],
-            [
+        $generatedPassword = null;
+
+        if (!$user) {
+            // User does not exist, create a new one
+            $generatedPassword = Str::random(10);
+            $user = User::create([
                 'name' => 'Client ' . $email, // Placeholder name
+                'email' => $email,
                 'password' => Hash::make($generatedPassword),
-            ]
-        );
+            ]);
 
-        // Generate localization link (for the person to be localized)
-        $localizationLink = route('track.show', ['uuid' => $uuid]);
+            // Flash the generated password to the session for the modal
+            $request->session()->flash('generatedPassword', $generatedPassword);
+            
+            // Generate localization link
+            $localizationLink = route('track.show', ['uuid' => $uuid]);
 
-        // Send welcome and invoice email
-        Mail::to($user->email)->send(new WelcomeAndInvoiceMail($user, $generatedPassword, $localizationLink));
+            // Send welcome email with the password
+            Mail::to($user->email)->send(new WelcomeAndInvoiceMail($user, $generatedPassword, $localizationLink));
+        }
+
+        // Authenticate the user (either existing or newly created)
+        Auth::login($user);
 
         // For MVP, simply redirect to the dashboard after "payment processing"
-        // In a real app, this is where payment gateway interaction would happen
         return redirect()->route('accessDashboard');
     }
 
