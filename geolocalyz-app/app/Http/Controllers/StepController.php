@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\WelcomeAndInvoiceMail;
 use App\Models\LocationRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
 class StepController extends Controller
@@ -69,6 +74,27 @@ class StepController extends Controller
 
     public function processPayment(string $uuid)
     {
+        $locationRequest = LocationRequest::where('uuid', $uuid)->firstOrFail();
+        $email = $locationRequest->email;
+
+        // Generate a random password
+        $generatedPassword = Str::random(10);
+
+        // Find or create the user
+        $user = User::firstOrCreate(
+            ['email' => $email],
+            [
+                'name' => 'Client ' . $email, // Placeholder name
+                'password' => Hash::make($generatedPassword),
+            ]
+        );
+
+        // Generate localization link
+        $localizationLink = route('accessLocalisation.show', ['uuid' => $uuid]);
+
+        // Send welcome and invoice email
+        Mail::to($user->email)->send(new WelcomeAndInvoiceMail($user, $generatedPassword, $localizationLink));
+
         // For MVP, simply redirect to the dashboard after "payment processing"
         // In a real app, this is where payment gateway interaction would happen
         return redirect()->route('accessDashboard');
@@ -82,7 +108,14 @@ class StepController extends Controller
     
     public function accessDashboard()
     {
-        $locationRequests = LocationRequest::latest()->get();
+        // Ensure user is authenticated
+        if (!Auth::check()) {
+            return redirect()->route('loginUser')->with('error', 'Please login to access your dashboard.');
+        }
+
+        $userEmail = Auth::user()->email;
+        $locationRequests = LocationRequest::where('email', $userEmail)->latest()->get();
+        
         return view('dashboardUser', compact('locationRequests'));
     }
 
