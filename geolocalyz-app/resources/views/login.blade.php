@@ -55,18 +55,39 @@
                 </div>
 
                 <div class="px-6 pb-8">
+                    @if(session('error'))
+                        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+                            <span class="block sm:inline">{{ session('error') }}</span>
+                        </div>
+                    @endif
+                    @if ($errors->any())
+                        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <div id="login-form" class="form-transition">
-                        <form action="{{ route('accessDashboard') }}" method="GET" class="space-y-4">
-                            <input type="email" placeholder="E-MAIL" 
+                        <form action="{{ route('login.authenticate') }}" method="POST" class="space-y-4">
+                            @csrf
+                            <input type="email" name="email" placeholder="E-MAIL" value="{{ old('email') }}"
                                 class="w-full bg-gray-50 border-2 border-transparent focus:border-brand rounded-full py-4 px-8 font-bold text-xs outline-none transition-all shadow-sm">
+                            @error('email')
+                                <span class="text-red-500 text-xs">{{ $message }}</span>
+                            @enderror
                             
                             <div class="relative">
-                                <input type="password" id="login-pass" placeholder="MOT DE PASSE" 
+                                <input type="password" name="password" id="login-pass" placeholder="MOT DE PASSE" 
                                     class="w-full bg-gray-50 border-2 border-transparent focus:border-brand rounded-full py-4 px-8 font-bold text-xs outline-none transition-all shadow-sm">
                                 <button type="button" onclick="togglePass('login-pass')" class="absolute right-6 top-1/2 -translate-y-1/2 text-gray-400 hover:text-brand">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
                                 </button>
                             </div>
+                            @error('password')
+                                <span class="text-red-500 text-xs">{{ $message }}</span>
+                            @enderror
                             
                             <button type="submit" class="w-full bg-brand text-white py-5 rounded-full font-black uppercase tracking-widest text-xs shadow-xl shadow-brand/30 hover:scale-[1.02] active:scale-95 transition-all mt-2">
                                 Se connecter
@@ -76,6 +97,7 @@
 
                     <div id="register-form" class="form-transition hidden-form">
                         <form action="{{ route('accessDashboard') }}" method="GET" class="space-y-4">
+                            @csrf
                             <div class="grid grid-cols-2 gap-3">
                                 <input type="text" placeholder="PRÉNOM" class="w-full bg-gray-50 border-2 border-transparent focus:border-brand rounded-full py-4 px-6 font-bold text-xs outline-none shadow-sm uppercase">
                                 <input type="text" placeholder="NOM" class="w-full bg-gray-50 border-2 border-transparent focus:border-brand rounded-full py-4 px-6 font-bold text-xs outline-none shadow-sm uppercase">

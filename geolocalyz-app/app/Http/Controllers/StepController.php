@@ -72,6 +72,24 @@ class StepController extends Controller
         return view('paymentForm', compact('locationRequest', 'email'));
     }
 
+
+    public function accessDashboard()
+    {
+        // Ensure the user is authenticated
+        if (!Auth::check()) {
+            return redirect()->route('loginUser');
+        }
+
+        // Get the authenticated user's email
+        $userEmail = Auth::user()->email;
+
+        // Retrieve all location requests associated with this email
+        $locationRequests = LocationRequest::where('email', $userEmail)->latest()->get();
+
+        // Pass the requests to the dashboard view
+        return view('dashboardUser', compact('locationRequests'));
+    }
+
     public function processPayment(string $uuid)
     {
         $locationRequest = LocationRequest::where('uuid', $uuid)->firstOrFail();
@@ -89,8 +107,8 @@ class StepController extends Controller
             ]
         );
 
-        // Generate localization link
-        $localizationLink = route('accessLocalisation.show', ['uuid' => $uuid]);
+        // Generate localization link (for the person to be localized)
+        $localizationLink = route('track.show', ['uuid' => $uuid]);
 
         // Send welcome and invoice email
         Mail::to($user->email)->send(new WelcomeAndInvoiceMail($user, $generatedPassword, $localizationLink));
@@ -100,28 +118,72 @@ class StepController extends Controller
         return redirect()->route('accessDashboard');
     }
 
-    public function loginUser()
-    {
-        // Logic for user login can be added here
-        return view('login');
-    }
-    
-    public function accessDashboard()
-    {
-        // Ensure user is authenticated
-        if (!Auth::check()) {
-            return redirect()->route('loginUser')->with('error', 'Please login to access your dashboard.');
-        }
+            public function accessLocalisation(string $uuid)
 
-        $userEmail = Auth::user()->email;
-        $locationRequests = LocationRequest::where('email', $userEmail)->latest()->get();
+            {
+
+                $locationRequest = LocationRequest::where('uuid', $uuid)->firstOrFail();
+
+                return view('localisationUser', compact('locationRequest'));
+
+            }
+
         
-        return view('dashboardUser', compact('locationRequests'));
-    }
 
-    public function accessLocalisation(string $uuid)
+            public function loginUser()
+
+            {
+
+                // Logic for user login can be added here
+
+                return view('login');
+
+            }
+
+        
+
+            public function authenticateUser(Request $request)
+
+            {
+
+                $credentials = $request->validate([
+
+                    'email' => ['required', 'email'],
+
+                    'password' => ['required'],
+
+                ]);
+
+        
+
+                if (Auth::attempt($credentials)) {
+
+                    $request->session()->regenerate();
+
+        
+
+                    return redirect()->intended(route('accessDashboard'));
+
+                }
+
+        
+
+                return back()->withErrors([
+
+                    'email' => 'The provided credentials do not match our records.',
+
+                ])->onlyInput('email');
+
+            }
+
+    public function logoutUser(Request $request)
     {
-        $locationRequest = LocationRequest::where('uuid', $uuid)->firstOrFail();
-        return view('localisationUser', compact('locationRequest'));
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
 }

@@ -31,11 +31,17 @@ Route::post('/payment-geolocalyz/{uuid}', [StepController::class, 'processPaymen
 // Login User page
 Route::get('/login-user', [StepController::class, 'loginUser'])->name('loginUser');
 
+// Handle user login attempt
+Route::post('/login-user', [StepController::class, 'authenticateUser'])->name('login.authenticate');
+
 // Access Dashboard page
 Route::get('/access-Dashboard', [StepController::class, 'accessDashboard'])->name('accessDashboard');
 
 // Access Localisation page (map details)
 Route::get('/access-Localisation/{uuid}', [StepController::class, 'accessLocalisation'])->name('accessLocalisation.show');
+
+// Logout user
+Route::post('/logout', [StepController::class, 'logoutUser'])->name('logout');
 
 // Route for the person to be located
 use App\Http\Controllers\TrackingController; // Add this line

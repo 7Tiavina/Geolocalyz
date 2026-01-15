@@ -33,7 +33,10 @@
         </a>
         <nav class="flex items-center gap-6">
             <a href="#" class="text-[10px] font-black text-gray-500 hover:text-brand transition-colors uppercase tracking-widest">Aide</a>
-            <a href="{{ route('loginUser') }}" class="text-[10px] font-black text-gray-500 hover:text-brand transition-colors uppercase tracking-widest">Déconnexion</a>
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit" class="text-[10px] font-black text-gray-500 hover:text-brand transition-colors uppercase tracking-widest">Déconnexion</button>
+            </form>
         </nav>
       </div>
     </header>
@@ -43,7 +46,7 @@
             
             <div class="mb-12 text-center">
                 <h1 class="text-3xl md:text-4xl font-black text-gray-900 tracking-tight mb-2">
-                    Bonjour, <span class="text-brand">Edzar !</span>
+                    Bonjour, <span class="text-brand">{{ Auth::user()->name }} !</span>
                 </h1>
                 <p class="text-gray-500 text-sm font-medium">Bienvenue sur votre tableau de bord Geolocalyz.</p>
             </div>
@@ -55,8 +58,8 @@
                         <div class="w-24 h-24 rounded-full bg-brand/10 flex items-center justify-center mb-4 border-2 border-brand/20">
                             <svg class="w-12 h-12 text-brand" fill="currentColor" viewBox="0 0 24 24"><path d="M12 4a4 4 0 100 8 4 4 0 000-8zM6 14a6 6 0 006 6 6 6 0 006-6v-1a4 4 0 00-4-4H8a4 4 0 00-4 4v1z"/></svg>
                         </div>
-                        <h2 class="text-xl font-bold text-gray-800 mb-1">Edzar Test</h2>
-                        <p class="text-sm text-gray-500 mb-6">edzar@gmail.com</p>
+                        <h2 class="text-xl font-bold text-gray-800 mb-1">{{ Auth::user()->name }}</h2>
+                        <p class="text-sm text-gray-500 mb-6">{{ Auth::user()->email }}</p>
 
                         <a href="#" class="inline-block bg-brand/10 text-brand text-xs font-bold px-5 py-2 rounded-full hover:bg-brand hover:text-white transition-all">
                             Modifier le profil
